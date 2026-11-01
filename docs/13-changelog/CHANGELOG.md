@@ -2,6 +2,19 @@
 
 All notable changes to BlackHornet will be documented in this file.
 
+## [Unreleased] — 2026-11-01
+
+### Removed
+- **Nine shadowed dead flat modules** under `src/agents/`: `colony.py`, `manus.py`,
+  `planner.py`, `coder.py`, `browser.py`, `voice.py`, `security.py`, `researcher.py`,
+  `executor.py`. Each existed alongside a same-named package; Python's import system
+  resolves `src.agents.<m>` to the package `__init__.py` in every case (verified via
+  `importlib.util.find_spec` for all 9 on 2026-11-01), so the flat files were
+  unreachable duplicates. Reference audit found zero direct path references in code,
+  tests, docs, or config. No public API changes — `from src.agents.X import ...`
+  imports are unaffected. (base_agent typing redesign, Phase P3a — design doc:
+  `docs/12-tasks/plans/2026-11-01-base-agent-typing-redesign.md`)
+
 ## [5.1.0] — NEXT (Planned)
 
 ### Integration Plan — External Source Projects
