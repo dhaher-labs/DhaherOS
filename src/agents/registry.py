@@ -11,6 +11,8 @@ from __future__ import annotations
 import logging
 from typing import Any, Dict, List, Optional, Set, Type
 
+from pydantic import BaseModel
+
 from src.core.event_bus import EventBus
 from src.agents.base import BaseAgent
 from src.agents.manus import ManusAgent
@@ -22,7 +24,16 @@ from src.agents.voice import VoiceAgent
 from src.agents.security import SecurityAgent
 from src.agents.researcher import ResearcherAgent
 from src.agents.colony import ColonyAgent
-from src.colony_types import AgentInfo, AgentSpec, AgentType, AgentState, EventType
+from src.colony_types import (
+    AgentInfo,
+    AgentSpec,
+    AgentState,
+    AgentType,
+    EventType,
+    Task,
+    TaskResult,
+)
+from src.colony_types.agent import AgentRole, SubagentSpawn
 from src.swarm.parked_agents import ParkedAgentRegistry, WakeHandler
 
 logger = logging.getLogger(__name__)
@@ -38,6 +49,42 @@ AGENT_TYPES: Dict[AgentType, Type[Any]] = {
     AgentType.RESEARCHER: ResearcherAgent,
     AgentType.COLONY: ColonyAgent,
 }
+
+# Explicit role→type mapping for the subagent-spawn seam (design doc
+# docs/12-tasks/plans/2026-11-01-base-agent-typing-redesign.md, Option A).
+# AgentRole.SUPERVISOR and AgentRole.WORKER deliberately have no
+# AgentType counterpart: top-level coordinator roles are not spawnable
+# as subagent workers, and requests for them are rejected loudly.
+_ROLE_TO_TYPE: dict[AgentRole, AgentType] = {
+    AgentRole.MANUS: AgentType.MANUS,
+    AgentRole.PLANNER: AgentType.PLANNER,
+    AgentRole.EXECUTOR: AgentType.EXECUTOR,
+    AgentRole.CODER: AgentType.CODER,
+    AgentRole.BROWSER: AgentType.BROWSER,
+    AgentRole.VOICE: AgentType.VOICE,
+    AgentRole.SECURITY: AgentType.SECURITY,
+    AgentRole.RESEARCHER: AgentType.RESEARCHER,
+    AgentRole.COLONY: AgentType.COLONY,
+}
+
+
+class SubagentRunResult(BaseModel):
+    """Result of a registry-owned subagent spawn.
+
+    Attributes
+    ----------
+    agent_id:
+        ID of the spawned (and registry-tracked) agent.
+    task_result:
+        The agent's ``TaskResult`` when execution completed (regardless of
+        success); ``None`` if the spawn/initialize path raised.
+    error:
+        Human-readable failure reason when ``task_result`` is ``None``.
+    """
+
+    agent_id: str
+    task_result: Optional[TaskResult] = None
+    error: Optional[str] = None
 
 
 class AgentRegistry:
@@ -117,6 +164,69 @@ class AgentRegistry:
         self._advertise_capabilities(agent)
 
         return agent
+
+    # ── Subagent spawning ──
+
+    async def create_subagent(
+        self,
+        spawn: SubagentSpawn,
+        *,
+        event_bus: Optional[EventBus] = None,
+    ) -> SubagentRunResult:
+        """Spawn and run a subagent for a :class:`SubagentSpawn` request.
+
+        Owner of the subagent-spawn seam (design:
+        ``docs/12-tasks/plans/2026-11-01-base-agent-typing-redesign.md``,
+        Option A): the role→type mapping is explicit, construction goes
+        through the real ``spec=`` path (:meth:`create_agent`), and
+        execution uses the registry-species contract (``Task`` in,
+        ``TaskResult`` out).
+
+        Parameters
+        ----------
+        spawn:
+            The subagent spawn request (role, task, metadata).
+        event_bus:
+            Optional event bus override; when given, the subagent is
+            constructed and tracked in a scoped registry wired to this bus
+            (used by the core delegate to inherit the parent's bus).
+
+        Returns
+        -------
+        SubagentRunResult
+            The spawned agent id and its task result.
+
+        Raises
+        ------
+        ValueError
+            If the requested role has no ``AgentType`` counterpart
+            (e.g. ``AgentRole.SUPERVISOR`` / ``WORKER``) — such roles are
+            top-level coordinators, not spawnable subagent workers.
+        """
+        agent_type = _ROLE_TO_TYPE.get(spawn.role)
+        if agent_type is None:
+            raise ValueError(
+                f"role {spawn.role.value} is not spawnable: no AgentType "
+                f"counterpart (SUPERVISOR/WORKER roles are top-level "
+                f"coordinators, not subagent workers)"
+            )
+        spec = AgentSpec(
+            agent_type=agent_type,
+            colony_id=spawn.metadata.get("colony_id"),
+        )
+        if event_bus is not None:
+            scoped = AgentRegistry(event_bus=event_bus)
+            agent = scoped.create_agent(agent_type, spec=spec)
+        else:
+            agent = self.create_agent(agent_type, spec=spec)
+        await agent.initialize()
+        task = Task(
+            description=spawn.task,
+            colony_id=spec.colony_id,
+            parent_task_id=spawn.metadata.get("parent_task_id"),
+        )
+        result = await agent.process_task(task)
+        return SubagentRunResult(agent_id=agent.agent_id, task_result=result)
 
     def unregister_agent(self, agent_id: str) -> None:
         """Unregister an agent by ID.

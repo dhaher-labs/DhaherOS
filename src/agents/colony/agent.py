@@ -203,7 +203,14 @@ class ColonyAgent(BaseAgent):
             task=task,
             tools=tools or [],
         )
-        return await self.spawn_subagent(spawn)
+        result = await self.spawn_subagent(spawn)
+        # Adapt the registry-owned spawn contract (SubagentRunResult, P2 of
+        # the base_agent typing redesign) back to this method's str interface.
+        if result.task_result is None:
+            return result.error or "subagent spawn failed"
+        if not result.task_result.success:
+            return result.task_result.error or "subagent task failed"
+        return str(result.task_result.data)
 
     async def route_task(self, task: str) -> AgentRole:
         """Route a task to the most appropriate agent role.

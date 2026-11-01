@@ -21,7 +21,7 @@ from __future__ import annotations
 import asyncio
 import json
 import time
-from typing import Any, Optional
+from typing import Any, Optional, TYPE_CHECKING
 
 from pydantic import BaseModel, Field, PrivateAttr
 
@@ -38,6 +38,9 @@ from src.colony_types.messages import Message, MessageRole
 from src.colony_types.tools import ToolResult
 
 logger = get_logger(__name__)
+
+if TYPE_CHECKING:  # pragma: no cover - typing only
+    from src.agents.registry import SubagentRunResult
 
 
 class BaseAgent(BaseModel):
@@ -468,41 +471,37 @@ class BaseAgent(BaseModel):
 
     # === Subagent Spawning ===
 
-    async def spawn_subagent(self, spawn: SubagentSpawn) -> str:
-        """Spawn a subagent to handle a subtask.
+    async def spawn_subagent(self, spawn: SubagentSpawn) -> SubagentRunResult:
+        """Spawn a subagent via the registry-owned typed factory.
+
+        Thin delegate to :meth:`src.agents.registry.AgentRegistry.create_subagent`
+        (design: ``docs/12-tasks/plans/2026-11-01-base-agent-typing-redesign.md``,
+        Option A). The previous implementation called ``AgentRegistry.get()``
+        (a method that does not exist) and constructed the child with
+        core-species kwargs — five stacked incompatibilities pinned by the
+        P1 characterization tests, now resolved by construction here.
 
         Args:
             spawn: The subagent spawn request.
 
         Returns:
-            The subagent's result.
+            SubagentRunResult with the spawned agent id and task result.
+
+        Raises:
+            ValueError: If the requested role has no ``AgentType``
+                counterpart (e.g. SUPERVISOR / WORKER) — not spawnable.
         """
         from src.agents.registry import AgentRegistry
 
         registry = AgentRegistry()
-        agent_cls = registry.get(spawn.role.value)
-        sub_agent = agent_cls(
-            config=AgentConfig(
-                role=spawn.role,
-                model=spawn.model or self.config.model,
-                tools=spawn.tools,
-                timeout=spawn.timeout or self.config.timeout,
-                parent_id=self.agent_id,
-                colony_id=self.config.colony_id,
-                metadata=spawn.metadata,
-            )
+        result = await registry.create_subagent(spawn, event_bus=self._get_event_bus())
+        self.subagent_ids.append(result.agent_id)
+        logger.info(
+            "spawned_subagent",
+            parent=self.agent_id,
+            child=result.agent_id,
+            role=spawn.role.value,
         )
-
-        # Inherit infrastructure
-        sub_agent.set_event_bus(self._get_event_bus())
-        sub_agent.set_llm_provider(self._get_llm_provider())
-        sub_agent.set_tool_registry(self._get_tool_registry())
-        sub_agent.set_memory_manager(self._get_memory_manager())
-
-        self.subagent_ids.append(sub_agent.agent_id)
-        logger.info("spawned_subagent", parent=self.agent_id, child=sub_agent.agent_id, role=spawn.role.value)
-
-        result = await sub_agent.run(spawn.task)
         return result
 
     # === Control ===

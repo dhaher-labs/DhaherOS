@@ -1,11 +1,14 @@
 # Design Note: BaseAgent typing redesign (Phase 5 M2+ backlog item 1)
 
-- **Status:** Proposed (design drafted; implementation sweep pending, phased below)
+- **Status:** In implementation — P1 landed @ `22fd81d` (7 characterization
+  tests), P2 landed @ this commit (registry-owned spawn factory Option A;
+  **mypy baseline 1 → 0**); P3 sweep pending
 - **Date:** 2026-11-01
 - **Author:** Task 20 sub-run (autonomous initiative window)
 - **Related:** [ADR-002 — type-system duality](../../11-adr/ADR-002-type-system-duality.md),
   [ROADMAP backlog](../../10-roadmap/ROADMAP.md) item 1, mypy baseline record
-  (ECOSYSTEM_OPS §4: mypy 2.4.1 CI-exact, 1 error)
+  (ECOSYSTEM_OPS §4: mypy 2.4.1 CI-exact — moved 1 → 0 errors by P2, recorded
+  in the P2 increment)
 - **Verification basis:** mypy 2.4.1 reproduction and importlib resolution checks run
   2026-11-01 at main `ad6f6f5` (worktree clean, pytest 539 passed / 28 skipped gate green).
 
