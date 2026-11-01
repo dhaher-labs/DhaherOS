@@ -120,6 +120,7 @@ class ABCSwarm:
 
     def _employed_phase(self):
         """Employed bees search around their food source"""
+        assert self.fitness_function is not None
         employed_bees = [b for b in self.bees if b.role == BeeRole.EMPLOYED]
         for bee in employed_bees:
             if bee.food_source_index is None:
@@ -154,6 +155,7 @@ class ABCSwarm:
 
     def _onlooker_phase(self):
         """Onlooker bees probabilistically select food sources"""
+        assert self.fitness_function is not None
         if not self.food_sources:
             return
 
@@ -192,6 +194,7 @@ class ABCSwarm:
 
     def _scout_phase(self):
         """Scout bees abandon exhausted sources"""
+        assert self.fitness_function is not None
         exhausted_indices = [
             i for i, s in enumerate(self.food_sources)
             if s.trial_limit >= self.max_trials

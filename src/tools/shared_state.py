@@ -16,11 +16,16 @@ import sqlite3
 import logging
 from pathlib import Path
 from datetime import datetime
-from typing import Optional, Dict, Type, TypeVar, Union
+from typing import Optional, Dict, Type, TypeVar, Union, TYPE_CHECKING
 
 logger = logging.getLogger("blackhornet.SharedState")
 
 T = TypeVar("T")
+
+if TYPE_CHECKING:
+    from src.tools.risk_officer_tool import RiskOfficerTool
+    from src.tools.kill_switch_tool import KillSwitchTool
+    from src.tools.journal_tool import JournalTool
 
 # Default database path
 DEFAULT_DB_PATH = Path(__file__).parent.parent / "data" / "bh_quant.db"
@@ -54,9 +59,9 @@ class SharedState:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Initialize shared tool instances
-        self._risk_officer = None
-        self._kill_switch = None
-        self._journal = None
+        self._risk_officer: Optional["RiskOfficerTool"] = None
+        self._kill_switch: Optional["KillSwitchTool"] = None
+        self._journal: Optional["JournalTool"] = None
 
         # Initialize database
         self._init_db()
