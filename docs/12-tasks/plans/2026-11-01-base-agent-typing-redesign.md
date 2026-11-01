@@ -55,7 +55,7 @@ result contract), not an ignore comment.
 ## 3. Sweep inventory (adjacent findings, for Phase P3)
 
 1. **Nine shadowed dead modules.** `src/agents/{colony,manus,planner,coder,browser,voice,security,researcher,executor}.py` all exist *alongside* same-named packages; Python resolves `src.agents.<m>` to the package `__init__.py` in every case (verified with `importlib.import_module` for all 9 on 2026-11-01). The flat files are unreachable duplicates — deletion candidates after a direct-reference audit.
-2. **Malformed ignore comment** at `src/agents/base.py:294`: `raise last_error  # type: ignoreisc]` — parsed as a bare ignore by accident; normalize (typed ignore or fix the `Optional[Exception]` raise properly).
+2. **[VOID — corrected 2026-11-02] "Malformed ignore comment"** at `src/agents/base.py:294`. Byte-level verification (hex dump of the line + `git show <blob>` pattern counts at `93f745e`, `a6de168`, `ad6f6f5`, `HEAD`) proves the comment is the valid typed ignore `raise last_error  # type: ignore[misc]` at every reference point, and the string `ignoreisc` has **0 occurrences** in every blob. The "malformed" reading was a transcript-rendering artifact (the `[m` characters were swallowed in the observing window's tool output) faithfully copied into this inventory. No code change needed; mypy already parses the typed ignore correctly. Item closed.
 3. **Weak registry typing**: `AGENT_TYPES: Dict[AgentType, Type[Any]]` should be `dict[AgentType, type[BaseAgent]]` (registry species) once the seam is owned by the registry.
 4. **Untyped-function notes** in `src/integration/*` (`annotation-unchecked`): candidate for `--check-untyped-defs` adoption after P2; assess error count in a dedicated window.
 5. ADR-002 remains the rule of record: the two species stay; this redesign **bridges** them, it does not merge them.
@@ -150,10 +150,11 @@ Rust gate path); keep as a future extension of Option A.
   `SUPERVISOR` rejection, result-contract shape. Gate: pytest 539+n green, ruff
   clean, `mypy src/` = **0 errors** (baseline moves 1 → 0; record in OPS).
 - **P3 — Sweep, one item per window, each gated:** (a) delete the 9 shadowed flat
-  modules after reference audit (rg for direct path references, changelog entry);
-  (b) normalize `src/agents/base.py:294` ignore; (c) `AGENT_TYPES` →
-  `dict[AgentType, type[BaseAgent]]`; (d) evaluate `--check-untyped-defs` for
-  `src/` (error-count assessment first).
+  modules after reference audit (rg for direct path references, changelog entry)
+  — **DONE @ `dcd2cc9`**; (b) normalize `src/agents/base.py:294` ignore — **VOID**
+  (see inventory #2: comment already valid `ignore[misc]`, byte-verified 2026-11-02);
+  (c) `AGENT_TYPES` → `dict[AgentType, type[BaseAgent]]`; (d) evaluate
+  `--check-untyped-defs` for `src/` (error-count assessment first).
 - Every phase: linear commit on `main`, no force-push, `ls-remote`-verified push to
   all remotes, tag untouched.
 
