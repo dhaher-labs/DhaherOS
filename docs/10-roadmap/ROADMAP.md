@@ -10,7 +10,7 @@
 - Paper-trading only; posture per PLAN.md: `BH_RUNTIME=python` default, money-path excluded from runtime migration until Phase 5+ (live-trading gate + journal semantics regression first)
 
 ### Post-MVP engineering backlog (Phase 5, M2+)
-1. **base_agent typing redesign** — mypy reports 1 known error rooted in base_agent type structure; requires a type redesign, not a quick fix (design task, then sweep)
+1. **base_agent typing redesign** — mypy reports 1 known error rooted in base_agent type structure; requires a type redesign, not a quick fix. **Design drafted 2026-11-01 @ ad6f6f5**: `docs/12-tasks/plans/2026-11-01-base-agent-typing-redesign.md` (root cause: spawn seam `base_agent.py:483` calls non-existent `AgentRegistry.get`, latent AttributeError — 5 stacked incompatibilities incl. AgentRole/AgentType enum mismatch; fix = registry-owned typed spawn factory, mypy target 0). Implementation sweep P1–P3 pending.
 2. ~~**Host bootstrap wire**~~ — **DONE 2026-11-01 @ 1a6cf80**: EcosystemRunner bootstrap now builds shared-bus AgentRegistry + ParkedAgentRegistry and wires `orchestrator.wire(agent_registry, parked_registry, park_wake)` (+6 tests: wiring identity, park/wake idempotence, custom wake injection, shared vs private bus)
 3. **Backpressure heartbeat** — optional hardening; no spec yet, spec-first
 4. **Rust migration wedges** — see PLAN.md phased approach (stable seams: MCP, RAP, `ModelProvider`, store traits)
