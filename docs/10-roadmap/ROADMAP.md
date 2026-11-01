@@ -2,16 +2,16 @@
 
 > **2026-10-30:** Rencana evolusi besar tersedia di [`ATLAS_PLAN.md`](./ATLAS_PLAN.md) — BlackHornet → Institution Platform (harness/control plane federasi runtime, sesi visi operator 28 Okt 2026). Dokumen ini tetap menjadi snapshot status v7.0.0.
 
-## Current (v7.0.0 — 2026-10-30)
-- pyproject version 7.0.0 (CHANGELOG 2026-10-27); main @ 154dc5c (105 commits ahead of tag v7.0.0 = 93f745e)
-- Test suite: 533 passed, 28 skipped (full run 2026-10-30, zero failures)
-- Autonomous ecosystem runtime live: supervisor v2-hardened + keepalive daemon (10-min beats) + 5-min health watchdog; auto-restart on crash via nested-orphan protocol (heal verified 2x; heals_total = 1)
-- Remote fleet in sync: 3 GitHub (mulkymalikuldhaher, mulkymalikuldhrs, org dhaher-labs) + 2 Codeberg (mulkymalikuldhr, org Dhaher-Labs) all at main=154dc5c + tag v7.0.0; GitLab re-ship pending old-project deletion watch
+## Current (v7.0.0 — 2026-11-01)
+- pyproject version 7.0.0 (CHANGELOG 2026-10-27); main @ 1a6cf80 (114 commits ahead of tag v7.0.0 = 93f745e)
+- Test suite: 539 passed, 28 skipped (full run 2026-11-01 @ 1a6cf80, zero failures)
+- Autonomous ecosystem runtime live: supervisor v2-hardened + keepalive daemon (10-min beats) + 5-min health watchdog; auto-restart on crash via nested-orphan protocol; hardening: guard v3 anti reuse-PID (cmdline-validated pidfile) + dev-spawn exec/setsid (no leftover wrapper shell, field-proven); heal verified 3x (heals_total = 1)
+- Remote fleet in sync: 3 GitHub (mulkymalikuldhaher, mulkymalikuldhrs, org dhaher-labs) + 2 Codeberg (mulkymalikuldhr, org Dhaher-Labs) all at main=1a6cf80 + tag v7.0.0; GitLab re-ship pending old-project deletion watch
 - Paper-trading only; posture per PLAN.md: `BH_RUNTIME=python` default, money-path excluded from runtime migration until Phase 5+ (live-trading gate + journal semantics regression first)
 
 ### Post-MVP engineering backlog (Phase 5, M2+)
 1. **base_agent typing redesign** — mypy reports 1 known error rooted in base_agent type structure; requires a type redesign, not a quick fix (design task, then sweep)
-2. **Host bootstrap wire** — AgentRegistry wiring decision for orchestrator + parked-agents bootstrap path (needs a design decision before implementation)
+2. ~~**Host bootstrap wire**~~ — **DONE 2026-11-01 @ 1a6cf80**: EcosystemRunner bootstrap now builds shared-bus AgentRegistry + ParkedAgentRegistry and wires `orchestrator.wire(agent_registry, parked_registry, park_wake)` (+6 tests: wiring identity, park/wake idempotence, custom wake injection, shared vs private bus)
 3. **Backpressure heartbeat** — optional hardening; no spec yet, spec-first
 4. **Rust migration wedges** — see PLAN.md phased approach (stable seams: MCP, RAP, `ModelProvider`, store traits)
 
