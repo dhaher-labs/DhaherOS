@@ -14,8 +14,11 @@ import json
 import logging
 import os
 import subprocess
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from dataclasses import dataclass, field
+
+if TYPE_CHECKING:
+    from .llm_provider import LLMProvider
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +59,7 @@ class LLMRouterBridge:
         self._timeout = self.config.get("timeout", 60)
         self._use_node = self.config.get("use_node", self._check_node_available())
 
-        self._fallback_provider = None
+        self._fallback_provider: Optional["LLMProvider"] = None
 
         self.stats = {
             "requests": 0,
@@ -77,12 +80,30 @@ class LLMRouterBridge:
             logger.warning("Node.js not available, using Python fallback LLM")
             return False
 
+    def _make_fallback_provider(self) -> "LLMProvider":
+        """Build the Python fallback LLM provider from the bridge config.
+
+        ``LLMProvider`` exposes explicit keyword arguments (no ``config``
+        dict), so map the documented config keys onto them.  Defaults mirror
+        ``LLMProvider.__init__`` so an empty config yields identical behavior.
+        """
+        from .llm_provider import LLMProvider
+
+        cfg = self.config or {}
+        return LLMProvider(
+            default_model=cfg.get("default_model", "gpt-4o"),
+            temperature=cfg.get("temperature", 0.1),
+            max_tokens=cfg.get("max_tokens", 4096),
+            max_retries=cfg.get("max_retries", 3),
+            timeout=cfg.get("timeout", 120),
+            cost_limit_daily=cfg.get("cost_limit_daily", 100.0),
+        )
+
     async def start(self):
         """Start the Node.js router process"""
         if not self._use_node:
             logger.info("Using Python fallback (Node.js not available)")
-            from .llm_provider import LLMProvider
-            self._fallback_provider = LLMProvider(config=self.config)
+            self._fallback_provider = self._make_fallback_provider()
             self._ready = True
             return
 
@@ -97,8 +118,7 @@ class LLMRouterBridge:
             else:
                 logger.error(f"No router .mjs found in {self.router_path}")
                 self._use_node = False
-                from .llm_provider import LLMProvider
-                self._fallback_provider = LLMProvider(config=self.config)
+                self._fallback_provider = self._make_fallback_provider()
                 self._ready = True
                 return
 
@@ -115,8 +135,7 @@ class LLMRouterBridge:
         except Exception as e:
             logger.error(f"Failed to start LLM Router: {e}")
             self._use_node = False
-            from .llm_provider import LLMProvider
-            self._fallback_provider = LLMProvider(config=self.config)
+            self._fallback_provider = self._make_fallback_provider()
             self._ready = True
 
     async def chat(self, messages: List[Dict], **kwargs) -> RouterResponse:

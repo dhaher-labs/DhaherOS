@@ -335,6 +335,18 @@ class TestLLMRouterBridge(unittest.TestCase):
         except ImportError as e:
             self.skipTest(str(e))
 
+    def test_fallback_provider_built_on_start(self):
+        try:
+            import asyncio
+            from src.core.llm_router_bridge import LLMRouterBridge
+
+            bridge = LLMRouterBridge({"use_node": False})
+            asyncio.run(bridge.start())
+            self.assertIsNotNone(bridge._fallback_provider)
+            self.assertTrue(bridge._ready)
+        except Exception as e:
+            self.skipTest(str(e))
+
 
 class TestChannel(unittest.TestCase):
     """Tests for src.core.channel"""
