@@ -48,7 +48,7 @@ class QNAIntegrationBridge:
     def __init__(self):
         self._initialized = False
         self._modules: Dict[str, Any] = {}
-        self._health = {"status": "uninitialized", "errors": []}
+        self._health: Dict[str, Any] = {"status": "uninitialized", "errors": []}
 
     def initialize(self) -> bool:
         """Lazy-import all QNA engine sub-modules."""

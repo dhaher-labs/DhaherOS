@@ -387,9 +387,8 @@ if __name__ == "__main__":
 
     async def _run():
         agent = ManusAgent()
-        await agent.initialize()
-        _log.info("ManusAgent initialized, state=%s", agent.state)
-        result = await agent.execute()
+        _log.info("ManusAgent ready, state=%s", agent.state)
+        result = await agent.run(f"Manus agent cycle {args.cycle}")
         _log.info("ManusAgent cycle=%d complete: %s", args.cycle, result)
 
     asyncio.run(_run())
