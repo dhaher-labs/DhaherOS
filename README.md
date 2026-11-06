@@ -5,6 +5,8 @@
 ![Version](https://img.shields.io/badge/version-7.0.0-orange)
 ![Trading](https://img.shields.io/badge/trading-paper--only-red)
 
+**Language:** [EN — English](README.md) · [ID — Bahasa Indonesia](README_id.md) · [CN — 中文](README_zh.md)
+
 > **Status — v7.0.0 clean rebuild.**
 > BlackHornet v7 is a fresh rebuild of the project with a **new single-commit git history** (all pre-v7 history was retired for security reasons — see [Security](#security)).
 > The trading module is **paper-trading only**. There is **no live broker connectivity**. Nothing in this repository is financial advice.
@@ -91,7 +93,7 @@ The trading money-path is **excluded from migration until Phase 5+**. Full detai
 - [docs/02-arch/MODULE_GRAPH.md](docs/02-arch/MODULE_GRAPH.md) — generated package dependency graph (regenerate: `python3 scripts/gen_arch_graph.py`)
 - [PLAN.md](PLAN.md) — rebuild plan, roadmap detail, acceptance criteria
 - [docs/13-changelog/](docs/13-changelog/CHANGELOG.md) — historical changelog and SAMAN integration audit
-- [README_id.md](README_id.md) / [README_zh.md](README_zh.md) — translations predate v7 and may be outdated
+- [README_id.md](README_id.md) / [README_zh.md](README_zh.md) — Indonesian and Chinese translations of this README
 
 ## Security
 
