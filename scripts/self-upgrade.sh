@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET Self-Upgrade Pipeline
+# DHAHEROS Self-Upgrade Pipeline
 # ============================================================================
 # Auto: check upstream → sandbox → verify → commit → push
 # Usage: bash scripts/self-upgrade.sh [check|dry-run|upgrade]

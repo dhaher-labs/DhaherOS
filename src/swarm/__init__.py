@@ -1,4 +1,4 @@
-"""BlackHornet CyberBee Swarm — PSO + ABC + Stigmergy."""
+"""DhaherOS CyberBee Swarm — PSO + ABC + Stigmergy."""
 
 from .pso_swarm import RingPSOSwarm, SwarmState, Particle, Topology
 from .abc_swarm import ABCSwarm, BeeRole, FoodSource, Bee

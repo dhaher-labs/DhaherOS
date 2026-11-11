@@ -1318,8 +1318,8 @@ class TestVoiceService(unittest.TestCase):
 
     def test_voice_set_wake_word(self):
         v = self._make_voice()
-        v.set_wake_word("blackhornet")
-        self.assertEqual(v._wake_word, "blackhornet")
+        v.set_wake_word("dhaheros")
+        self.assertEqual(v._wake_word, "dhaheros")
 
     def test_voice_wake_trigger_clear(self):
         v = self._make_voice()

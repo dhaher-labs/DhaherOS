@@ -17,7 +17,7 @@
 //!
 //! Researcher mapping honoured (worklog Task 12-c, PLAN.md §4):
 //!
-//! | BlackHornet concept | Infinity primitive | Phase |
+//! | DhaherOS concept | Infinity primitive | Phase |
 //! |---------------------|--------------------|-------|
 //! | `src/colony/jeumpa_brain.py` (keyless LLM layer) | `ModelProvider` (`infinity-provider-protocol`) | 1 |
 //! | `src/agent_tools/` + MCP servers | `infinity-mcp-bridge` crate (zero-rewrite MCP proxy) | 1 |
@@ -60,7 +60,7 @@ impl core::fmt::Display for AdapterError {
 impl std::error::Error for AdapterError {}
 
 /// Phase 0 proof-of-linkage: wires the two real Infinity in-memory stores
-/// together under BlackHornet naming.
+/// together under DhaherOS naming.
 ///
 /// TODO(Phase 3): replace the `InMemory*` stores with implementations of
 /// `ConversationStore` / `StateStore` backed by BH `MemoryFederation`

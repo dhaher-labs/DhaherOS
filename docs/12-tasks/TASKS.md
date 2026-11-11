@@ -1,4 +1,4 @@
-# Tasks — BlackHornet
+# Tasks — DhaherOS
 
 ## Active Tasks
 | ID | Task | Priority | Status |

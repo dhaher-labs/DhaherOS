@@ -9,7 +9,7 @@ import json
 import logging
 from datetime import datetime
 
-logger = logging.getLogger("blackhornet.KillSwitch")
+logger = logging.getLogger("dhaheros.KillSwitch")
 
 
 class KillSwitchTool:

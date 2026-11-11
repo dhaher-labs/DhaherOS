@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET — User Alignment Engine
+DHAHEROS — User Alignment Engine
 =====================================
 Orients the entire ecosystem to Dhaher Labs and the Sovereign.
 Every agent, every decision, every output is aligned.
@@ -19,7 +19,7 @@ logger = logging.getLogger("UserAlignment")
 
 # ── The Core Identity ──────────────────────────────────────────────
 IDENTITY = {
-    "ecosystem": "BLACKHORNET",
+    "ecosystem": "DHAHEROS",
     "version": "5.0.0",
     "sovereign": "Mulky Malikul Dhaher",
     "foundation": "Dhaher Labs",
@@ -58,7 +58,7 @@ class UserAlignmentEngine:
     def get_identity_signature(self) -> str:
         """Get the identity signature to embed in all outputs."""
         return (
-            f"\U0001f5a4 BLACKHORNET v{self.identity['version']} \u2014 "
+            f"\U0001f5a4 DHAHEROS v{self.identity['version']} \u2014 "
             f"Sovereign: {self.identity['sovereign']} \u2014 "
             f"Dhaher Labs"
         )

@@ -1,11 +1,11 @@
 #!/bin/bash
 # ============================================================================
-# 🖤 BLACKHORNET — One-Command Nest Deployer
+# 🖤 DHAHEROS — One-Command Nest Deployer
 # ============================================================================
 # Philosophy: Like hornets — autonomous, relentless, swarm-intelligent.
 # One command births the entire sovereign agent empire.
 #
-#   curl -fsSL https://codeberg.org/Dhaher-Labs/blackhornet/raw/branch/main/deploy.sh | bash
+#   curl -fsSL https://codeberg.org/Dhaher-Labs/dhaheros/raw/branch/main/deploy.sh | bash
 # ============================================================================
 
 set -euo pipefail
@@ -53,7 +53,7 @@ banner() {
     clear 2>/dev/null || true
     echo ""
     echo -e "${BOLD}${HORNET_ART}${NC}"
-    echo -e "${BOLD}  BLACKHORNET — Sovereign Autonomous Ecosystem${NC}"
+    echo -e "${BOLD}  DHAHEROS — Sovereign Autonomous Ecosystem${NC}"
     echo -e "${DIM}  One command. 9 repos. Infinite agents. Immortal empire.${NC}"
     echo ""
 }
@@ -97,15 +97,15 @@ main() {
     fi
     ok "uv: $(uv --version 2>/dev/null || echo 'installed')"
 
-    # 2. Clone blackhornet
+    # 2. Clone dhaheros
     step "2/6" "Building the nest..."
     mkdir -p "$NEST_DIR"
-    if [ ! -d "$NEST_DIR/blackhornet" ]; then
-        clone_repo "blackhornet" "$NEST_DIR/blackhornet"
+    if [ ! -d "$NEST_DIR/dhaheros" ]; then
+        clone_repo "dhaheros" "$NEST_DIR/dhaheros"
     else
-        git -C "$NEST_DIR/blackhornet" pull --rebase 2>/dev/null || true
+        git -C "$NEST_DIR/dhaheros" pull --rebase 2>/dev/null || true
     fi
-    ok "blackhornet orchestrator ready"
+    ok "dhaheros orchestrator ready"
 
     # 3. Clone all ecosystem repos
     step "3/6" "Deploying hornet swarm..."
@@ -131,23 +131,23 @@ main() {
     step "4/6" "Starting JeumpaLLM (LLM gateway)..."
     cd "$NEST_DIR/JeumpaLLM"
     npm install --omit=dev --silent 2>/dev/null || true
-    PORT=3333 nohup node index.js > /tmp/blackhornet-jeumpallm.log 2>&1 &
+    PORT=3333 nohup node index.js > /tmp/dhaheros-jeumpallm.log 2>&1 &
     sleep 3
     if curl -s http://localhost:3333/health > /dev/null 2>&1; then
         ok "JeumpaLLM ONLINE — 10 providers, 468 models, FREE"
     else
-        warn "JeumpaLLM starting (check /tmp/blackhornet-jeumpallm.log)"
+        warn "JeumpaLLM starting (check /tmp/dhaheros-jeumpallm.log)"
     fi
 
-    # 5. Install blackhornet deps
+    # 5. Install dhaheros deps
     step "5/6" "Arming trading hornets..."
-    cd "$NEST_DIR/blackhornet"
+    cd "$NEST_DIR/dhaheros"
     "$PY" -m venv .venv 2>/dev/null || true
     . .venv/bin/activate 2>/dev/null || true
     "$PY" -m pip install -r requirements.txt openai -q 2>/dev/null || true
     ok "Trading pipeline armed"
 
-    # Clone BlackHornet Agent (Nous Research)
+    # Clone DhaherOS Agent (Nous Research)
     if [ ! -d "$BH_HOME/nous-agent" ]; then
         git clone --depth 1 https://github.com/NousResearch/hermes-agent.git "$BH_HOME/nous-agent" 2>/dev/null || true
         if [ -d "$BH_HOME/nous-agent" ]; then
@@ -155,12 +155,12 @@ main() {
             UV_PYTHON="$PY" bash setup-bh.sh --skip-setup --non-interactive 2>/dev/null || true
         fi
     fi
-    ok "BlackHornet Agent (Nous Research) installed"
+    ok "DhaherOS Agent (Nous Research) installed"
 
     # 6. Start the nest
-    step "6/6" "Launching BLACKHORNET nest..."
+    step "6/6" "Launching DHAHEROS nest..."
 
-    cd "$NEST_DIR/blackhornet"
+    cd "$NEST_DIR/dhaheros"
 
     # Start Unified Launcher (must run from project root for module imports)
     nohup "$PY" -m src.integration.unified_launcher --port 8080 > logs/launcher.log 2>&1 &
@@ -177,7 +177,7 @@ print('Swarm engine available')
     # ── Final Report ──────────────────────────────────────────────
     echo ""
     echo -e "${BOLD}╔══════════════════════════════════════════════════╗${NC}"
-    echo -e "${BOLD}║     🖤 BLACKHORNET NEST — OPERATIONAL            ║${NC}"
+    echo -e "${BOLD}║     🖤 DHAHEROS NEST — OPERATIONAL            ║${NC}"
     echo -e "${BOLD}╚══════════════════════════════════════════════════╝${NC}"
     echo ""
     echo -e "  ${BOLD}Sovereign:${NC}    Mulky Malikul Dhaher"
@@ -188,10 +188,10 @@ print('Swarm engine available')
     echo -e "  ${BOLD}Swarm:${NC}        Git-synced via dhaher-labs/agent"
     echo ""
     echo -e "  ${CYAN}Commands:${NC}"
-    echo -e "    cd $NEST_DIR/blackhornet"
-    echo -e "    python3 blackhornet.py --sovereign   # Control panel"
-    echo -e "    python3 blackhornet.py --status      # Nest status"
-    echo -e "    cd $NEST_DIR/blackhornet && python3 sovereign.py"
+    echo -e "    cd $NEST_DIR/dhaheros"
+    echo -e "    python3 dhaheros.py --sovereign   # Control panel"
+    echo -e "    python3 dhaheros.py --status      # Nest status"
+    echo -e "    cd $NEST_DIR/dhaheros && python3 sovereign.py"
     echo ""
     echo -e "  ${DIM}The hornets are autonomous. The nest is immortal.${NC}"
     echo -e "  ${DIM}They hunt. They build. They expand. They never die.${NC}"

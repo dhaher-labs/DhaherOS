@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Standalone runner that connects the BlackHornet colony to Telegram.
+"""Standalone runner that connects the DhaherOS colony to Telegram.
 
 Reads the bot token from MULTICOLONY_CHANNEL_TELEGRAM_BOT_TOKEN (environment
 or repo-root .env -- never hardcoded, never logged) and starts the
@@ -38,7 +38,7 @@ ENV_TOKEN_KEY = "MULTICOLONY_CHANNEL_TELEGRAM_BOT_TOKEN"
 ENV_ALLOWED_KEY = "MULTICOLONY_CHANNEL_TELEGRAM_ALLOWED_CHAT_IDS"
 
 HELP_TEXT = (
-    "BlackHornet Colony - Telegram bridge aktif.\n"
+    "DhaherOS Colony - Telegram bridge aktif.\n"
     "Perintah: /help, /ping, /status.\n"
     "Pesan lain dicatat sebagai inbound event koloni."
 )
@@ -78,7 +78,7 @@ async def _handle_inbound(channel: Any, message: Any) -> None:
     elif text.startswith("/status"):
         info = channel.get_info()
         reply = (
-            "BlackHornet channel status: "
+            "DhaherOS channel status: "
             f"running={info.get('is_running')} "
             f"sent={info.get('sent_count')} "
             f"received={info.get('received_count')}"

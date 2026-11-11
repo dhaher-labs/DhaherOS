@@ -1,5 +1,5 @@
 """
-BlackHornet Unit Tests
+DhaherOS Unit Tests
 Tests core, agents, colony, swarm, and self_healing modules.
 
 Run: python3 -m pytest tests/test_bh_units.py -v

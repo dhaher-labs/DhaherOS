@@ -52,7 +52,7 @@ class EcosystemRunner:
         graph_store: Any = None,
         memory_system: Any = None,
         event_bus: Any = None,
-        colony_name: str = "blackhornet",
+        colony_name: str = "dhaheros",
         park_wake: Any = None,
     ) -> None:
         from src.agents.registry import AgentRegistry

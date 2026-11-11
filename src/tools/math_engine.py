@@ -12,7 +12,7 @@ import math
 from typing import Dict, List, Optional
 from datetime import datetime
 
-logger = logging.getLogger("blackhornet.MathEngine")
+logger = logging.getLogger("dhaheros.MathEngine")
 
 
 class MathEngine:

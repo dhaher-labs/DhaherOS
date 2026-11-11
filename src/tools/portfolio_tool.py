@@ -10,7 +10,7 @@ import json
 import logging
 from typing import Any
 
-logger = logging.getLogger("blackhornet.Portfolio")
+logger = logging.getLogger("dhaheros.Portfolio")
 
 
 class PortfolioTool:

@@ -77,7 +77,7 @@ class MeshMessage(BaseModel):
 
 class NestConfig(BaseModel):
     nest_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    name: str = "blackhornet-nest"
+    name: str = "dhaheros-nest"
     version: str = "5.0.0"
 
     data_dir: str = "data"
@@ -92,7 +92,7 @@ class NestConfig(BaseModel):
     dependencies: list[str] = Field(default_factory=lambda: ["python3", "pip3", "git"])
     required_packages: list[str] = Field(default_factory=list)
     env_file: str = "config/.env"
-    entry_point: str = "blackhornet-doctor"
+    entry_point: str = "dhaheros-doctor"
 
     heartbeat_port: int = 0
     api_port: int = 0

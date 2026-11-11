@@ -48,7 +48,7 @@ class Council:
         "Responsible Officer": Persona("Responsible Officer", "Risk", "What could go wrong?", 1.1),
         "Skeptic": Persona("Skeptic", "Audit", "Why will this fail?", 1.1),
         "Historian": Persona("Historian", "Memory", "Tried before? Lesson learned?", 0.95),
-        "BlackHornet Lead": Persona("BlackHornet Lead", "Swarm", "Delegate or swarm?", 1.0),
+        "DhaherOS Lead": Persona("DhaherOS Lead", "Swarm", "Delegate or swarm?", 1.0),
         "Security Lead": Persona("Security Lead", "Security", "Is this safe? OWASP check?", 1.1),
         "Graph Analyst": Persona("Graph Analyst", "Data", "What does the graph show?", 0.85),
         "Ecosystem Guardian": Persona("Ecosystem Guardian", "Sync", "Pages synced? Changelog updated?", 1.0),
@@ -125,7 +125,7 @@ class Council:
         return self._history[-limit:]
 
     def deliberate(self, context: str, **kwargs) -> CouncilResult:
-        """Alias for convene() — debate entry point used by BlackHornet orchestration."""
+        """Alias for convene() — debate entry point used by DhaherOS orchestration."""
         return self.convene(context, **kwargs)
 
     async def run_consensus_debate(self, context: str, proposal: str) -> CouncilResult:

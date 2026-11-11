@@ -1,4 +1,4 @@
-"""Colony Radar Protocol — cross-instance discovery for Blackhornet colonies.
+"""Colony Radar Protocol — cross-instance discovery for DhaherOS colonies.
 
 Layers:
   1. LAN Broadcast (UDP multicast) — zero-config discovery on local network
@@ -58,7 +58,7 @@ class RadarConfig:
 
 
 class ColonyRadar:
-    """Discovers and tracks remote Blackhornet colonies on the network."""
+    """Discovers and tracks remote DhaherOS colonies on the network."""
 
     def __init__(self, config: RadarConfig, health_monitor: Optional[ColonyHealthMonitor] = None) -> None:
         self._config = config

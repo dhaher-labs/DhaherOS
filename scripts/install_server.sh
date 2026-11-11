@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET - Linux Server Installation Script
+# DHAHEROS - Linux Server Installation Script
 # ============================================================================
 # Installs on Linux server with systemd for on-boot + auto-restart
 #
@@ -17,11 +17,11 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INSTALL_DIR="${1:-/opt/blackhornet}"
+INSTALL_DIR="${1:-/opt/dhaheros}"
 SERVICE_USER="${SUDO_USER:-$(whoami)}"
 
 echo -e "${BOLD}${GREEN}"
-echo "BLACKHORNET - Server Installer"
+echo "DHAHEROS - Server Installer"
 echo "Installing to: $INSTALL_DIR"
 echo "Service user: $SERVICE_USER"
 echo -e "${NC}"
@@ -46,9 +46,9 @@ sed -i "s|/workspace/bh_quant|$INSTALL_DIR|g" "$INSTALL_DIR/config/.env" 2>/dev/
 
 # Install systemd service
 echo -e "${BOLD}${GREEN}[3/5] Installing systemd service...${NC}"
-cat > /etc/systemd/system/blackhornet.service << EOF
+cat > /etc/systemd/system/dhaheros.service << EOF
 [Unit]
-Description=BlackHornet Operating System
+Description=DhaherOS Operating System
 After=network-online.target
 Wants=network-online.target
 
@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable blackhornet
+systemctl enable dhaheros
 
 # Install cron health check
 echo -e "${BOLD}${GREEN}[4/5] Installing cron keeper...${NC}"
@@ -78,17 +78,17 @@ CRON_CMD="*/1 * * * * cd $INSTALL_DIR && python3 scripts/keeper.py >> $INSTALL_D
 (crontab -u $SERVICE_USER -l 2>/dev/null | grep -v "bh"; echo "$CRON_CMD") | crontab -u $SERVICE_USER - || true
 
 # Start
-echo -e "${BOLD}${GREEN}[5/5] Starting BLACKHORNET...${NC}"
-systemctl start blackhornet
+echo -e "${BOLD}${GREEN}[5/5] Starting DHAHEROS...${NC}"
+systemctl start dhaheros
 
 echo ""
-echo -e "${BOLD}${GREEN}BLACKHORNET INSTALLED!${NC}"
+echo -e "${BOLD}${GREEN}DHAHEROS INSTALLED!${NC}"
 echo ""
 echo "Commands:"
-echo "  Start:   sudo systemctl start blackhornet"
-echo "  Stop:    sudo systemctl stop blackhornet"
-echo "  Status:  sudo systemctl status blackhornet"
-echo "  Logs:    journalctl -u blackhornet -f"
+echo "  Start:   sudo systemctl start dhaheros"
+echo "  Stop:    sudo systemctl stop dhaheros"
+echo "  Status:  sudo systemctl status dhaheros"
+echo "  Logs:    journalctl -u dhaheros -f"
 echo ""
 echo "On-boot:  Enabled (systemd)"
 echo "Watchdog: Active (auto-restart on crash)"

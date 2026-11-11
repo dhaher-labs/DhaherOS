@@ -1,4 +1,4 @@
-# Testing Strategy — BlackHornet Ω
+# Testing Strategy — DhaherOS Ω
 
 ## Test Layers
 1. **Unit tests** — Individual modules, no dependencies (pytest)

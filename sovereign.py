@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""BLACKHORNET HIVE — Sovereign Control Panel"""
+"""DHAHEROS HIVE — Sovereign Control Panel"""
 import sys, json, os, urllib.request, subprocess
 from pathlib import Path
 from datetime import datetime, timezone
@@ -36,7 +36,7 @@ def check_proc(name: str):
 def main() -> None:
     print()
     print(f"{M}{B}╔══════════════════════════════════════════════════╗{N}")
-    print(f"{M}{B}║{N}  {B}BLACKHORNET HIVE — Sovereign Control{N}                    {M}{B}║{N}")
+    print(f"{M}{B}║{N}  {B}DHAHEROS HIVE — Sovereign Control{N}                    {M}{B}║{N}")
     print(f"{M}{B}║{N}  {D}Empire of Mulky Malikul Dhaher{N}                       {M}{B}║{N}")
     print(f"{M}{B}║{N}  {D}{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}{N}                           {M}{B}║{N}")
     print(f"{M}{B}╠══════════════════════════════════════════════════╣{N}")
@@ -111,12 +111,12 @@ def main() -> None:
 
     # Repos
     print(f"{M}{B}║{N} {hd('📦 ECOSYSTEM (7 repos)')}")
-    repos = ['blackhornet','Quant-Nanggroe-AI','AI-MultiColony-Ecosystem',
+    repos = ['dhaheros','Quant-Nanggroe-AI','AI-MultiColony-Ecosystem',
              'Vibe-Trading','JeumpaLLM','mnemosyne']
     base = Path(__file__).parent
     ws = base.parent
     for repo in repos:
-        d = base if repo == 'blackhornet' else (ws / repo)
+        d = base if repo == 'dhaheros' else (ws / repo)
         if d.exists():
             print(f"{M}{B}║{N}   {ok(repo)}")
         else:

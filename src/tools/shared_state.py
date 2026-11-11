@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET - Shared State Manager
+DHAHEROS - Shared State Manager
 ========================================
 Single Source of Truth for all runtime state.
 Solves: PnL desync, state lost on restart, redundant tool instances.
@@ -18,7 +18,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional, Dict, Type, TypeVar, Union, TYPE_CHECKING
 
-logger = logging.getLogger("blackhornet.SharedState")
+logger = logging.getLogger("dhaheros.SharedState")
 
 T = TypeVar("T")
 
@@ -33,7 +33,7 @@ DEFAULT_DB_PATH = Path(__file__).parent.parent / "data" / "bh_quant.db"
 
 class SharedState:
     """
-    Global shared state singleton for BLACKHORNET.
+    Global shared state singleton for DHAHEROS.
 
     Guarantees:
     - One RiskOfficerTool instance (PnL never desyncs)

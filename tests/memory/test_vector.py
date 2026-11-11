@@ -15,7 +15,7 @@ class TestVectorStore(unittest.TestCase):
     def test_add_and_search(self):
         from src.memory.vector import VectorStore
         store = VectorStore(collection_name="test", persist_dir=self.temp_dir)
-        store.add("doc1", "BlackHornet is an AGI swarm", {"type": "doc"})
+        store.add("doc1", "DhaherOS is an AGI swarm", {"type": "doc"})
         store.add("doc2", "QNA is a quant trading engine", {"type": "doc"})
         results = store.search("AGI", top_k=5)
         self.assertIsInstance(results, list)

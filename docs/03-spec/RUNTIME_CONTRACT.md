@@ -76,7 +76,7 @@ Loop berhenti hanya saat: **goal tercapai / budget habis / blocked / butuh perse
   aslinya — core hanya menyimpan **referensi/ringkasan koordinasi** (D2).
 - Executor awal: **OpenCode + Hermes Agent** via **adapter kontrak** (D3); Orca &
   DeepSeek harness di**karantina** evaluasi, bukan dependency.
-- Python BlackHornet (colony/omega/swarm) **tetap berjalan** sebagai salah satu runtime
+- Python DhaherOS (colony/omega/swarm) **tetap berjalan** sebagai salah satu runtime
   di federasi — tidak di-port (posture PLAN.md: "adopt the protocol, embed the runtime,
   never port the colony").
 - Flag `BH_RUNTIME=python|rust`, **default `python`**; money-path trading dikecualikan

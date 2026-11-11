@@ -15,7 +15,7 @@ import logging
 from datetime import datetime
 from typing import Optional, Dict, List, Any
 
-logger = logging.getLogger("blackhornet.Execution")
+logger = logging.getLogger("dhaheros.Execution")
 
 
 class ExecutionTool:

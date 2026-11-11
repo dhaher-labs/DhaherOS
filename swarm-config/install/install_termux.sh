@@ -9,9 +9,9 @@ echo "==================================="
 pkg update -y
 pkg install -y git curl python nodejs termux-api termux-boot 2>/dev/null || true
 
-# 1. Install BlackHornet Agent
+# 1. Install DhaherOS Agent
 if ! command -v hermes &>/dev/null; then
-  echo "[1/4] Installing BlackHornet Agent..."
+  echo "[1/4] Installing DhaherOS Agent..."
   curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 fi
 
@@ -25,7 +25,7 @@ done
 echo "[3/4] Cloning repositories..."
 mkdir -p ~/.bh/shared-workspace
 cd ~/.bh/shared-workspace
-for repo in JeumpaLLM mnemosyne blackhornet; do
+for repo in JeumpaLLM mnemosyne dhaheros; do
   git clone "https://github.com/dhaher-labs/${repo}.git" 2>/dev/null || true
 done
 cd ~/.bh && git clone https://github.com/dhaher-labs/agent.git github-sync 2>/dev/null || true

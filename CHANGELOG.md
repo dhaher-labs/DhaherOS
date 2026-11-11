@@ -1,7 +1,34 @@
 # Changelog
 
-All notable changes to BlackHornet are documented here.
+All notable changes to DhaherOS (formerly BlackHornet) are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/); versioning: SemVer.
+
+## [8.0.0] — 2026-11-11
+
+Rebrand BlackHornet → DhaherOS; kelanjutan pengembangan.
+
+### Changed
+- **Full identity rebrand** per DL-37 (owner mandate 2026-11-11): BlackHornet is
+  now **DhaherOS**. README (EN/ID/ZH), package metadata (`blackhornet-colony`
+  → `dhaheros`, version `7.0.0` → `8.0.0`), deploy assets, installer banners,
+  runtime defaults, socket paths (`/run/dhaheros`), workflow names, and
+  user-facing strings were rebranded.
+- **Credits & Heritage** added to the README: DhaherOS is the official
+  continuation of BlackHornet v7.0.0 by mulkymalikuldhr / Dhaher-Labs.
+- Historical records (pre-rebrand changelog entries, ADRs, archived task plans)
+  intentionally keep their original "BlackHornet" wording — they document the
+  past, not the present identity.
+
+### Added
+- `REBRAND.md` — rebrand chronology: BlackHornet v7.0.0 (tag `93f745e`) →
+  DL-37 pivot 2026-11-06 → full rebrand 2026-11-11 (commit fingerprint, tag
+  `v8.0.0`).
+
+### Unchanged
+- Runtime behavior, module structure, and the public test suite: the rebrand is
+  identity-level; internal `bh_*`/`bh-*` identifiers (types, Rust crates, CLI
+  entry points `bh-colony`/`bh-omega`) are preserved as internal heritage
+  naming to keep diffs minimal and compatibility intact.
 
 ## [7.0.0] — 2026-10-27
 
@@ -54,4 +81,5 @@ contained marketing claims that audit showed to be stubs or dead code, so those
 claims were withdrawn rather than carried forward. The v5.x–v6.x line ends at the
 pre-rebuild commit; v7.0.0 is the new root.
 
+[8.0.0]: #800---2026-11-11
 [7.0.0]: #700---2026-10-27

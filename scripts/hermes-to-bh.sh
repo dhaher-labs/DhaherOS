@@ -1,6 +1,6 @@
 #!/bin/bash
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Hermes Nous → BlackHornet Auto-Sync Pipeline
+# Hermes Nous → DhaherOS Auto-Sync Pipeline
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Fetches from hermes-nous-research repo,
 # converts research data → BH agent updates,
@@ -9,7 +9,7 @@
 set -euo pipefail
 
 DHAHER="${DHAHERLABS:-/sdcard/dhaherlabs}"
-BH="$DHAHER/blackhornet-worktree"
+BH="$DHAHER/dhaheros-worktree"
 HERMES_REPO="https://codeberg.org/mulkydhaher/hermes-nous-research.git"
 HERMES_DIR="$DHAHER/data/hermes-nous-research"
 OMEGA_DATA="$DHAHER/data/omega"

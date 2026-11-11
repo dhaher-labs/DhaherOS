@@ -9,7 +9,7 @@ import json
 import logging
 from datetime import datetime
 
-logger = logging.getLogger("blackhornet.Strategy")
+logger = logging.getLogger("dhaheros.Strategy")
 
 
 class StrategyTool:

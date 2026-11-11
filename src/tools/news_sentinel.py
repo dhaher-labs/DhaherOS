@@ -10,7 +10,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Any, Dict
 
-logger = logging.getLogger("blackhornet.NewsSentinel")
+logger = logging.getLogger("dhaheros.NewsSentinel")
 
 
 class NewsSentinelTool:

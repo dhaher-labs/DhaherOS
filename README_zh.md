@@ -1,21 +1,21 @@
-# BlackHornet
+# DhaherOS
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Version](https://img.shields.io/badge/version-7.0.0-orange)
+![Version](https://img.shields.io/badge/version-8.0.0-orange)
 ![Trading](https://img.shields.io/badge/trading-paper--only-red)
 
 **选择语言：** [EN — English](README.md) · [ID — Bahasa Indonesia](README_id.md) · [CN — 中文](README_zh.md)
 
-> **状态 — v7.0.0 全新重建。**
-> BlackHornet v7 是一次彻底的重建，采用**全新的单提交 git 历史**（出于安全原因，所有 v7 之前的历史均已废弃 — 参见[安全](#安全)）。
+> **状态 — v8.0.0（DhaherOS）。**
+> DhaherOS 延续自 BlackHornet v7.0.0——那是一次彻底的重建，采用**全新的单提交 git 历史**（出于安全原因，所有 v7 之前的历史均已废弃 — 参见[安全](#安全)）。
 > 交易模块**仅支持模拟盘（paper-trading）**。**不存在任何真实券商连接。** 本仓库中的任何内容均不构成投资建议。
 
 ---
 
-## BlackHornet 是什么
+## DhaherOS 是什么
 
-BlackHornet 是一个用 Python 编写的**自主智能体群落平台**：由相互协作的智能体进程组成群落，具备共享内存、实时生态系统状态、免密钥 LLM 访问、沙箱化的工具注册表，以及仅限模拟盘的交易栈 — 通过零依赖的仪表盘提供服务。
+DhaherOS 是一个用 Python 编写的**自主智能体群落平台**：由相互协作的智能体进程组成群落，具备共享内存、实时生态系统状态、免密钥 LLM 访问、沙箱化的工具注册表，以及仅限模拟盘的交易栈 — 通过零依赖的仪表盘提供服务。
 
 它**不是** AGI，也尚未进行任何有实际意义的自我改进。其中部分组件（Omega"自我改进"循环与 Council 辩论）是**带有模拟辩论输出的治理脚手架**，并已如实标注。本 README 只描述真正可用的功能，均已对照代码与 v7 基线的 366 项测试套件进行验证。
 
@@ -42,7 +42,7 @@ BlackHornet 是一个用 Python 编写的**自主智能体群落平台**：由�
 要求：**Python ≥ 3.11** 和 pip。
 
 ```bash
-# 安装（可编辑模式，本地包 "blackhornet-colony"）
+# 安装（可编辑模式，本地包 "dhaheros"）
 pip install -e .
 
 # 仪表盘 + 生态系统 API + 记忆 + 知识图谱（http://localhost:8080）
@@ -94,6 +94,10 @@ Docker：包含多阶段非 root 的 `Dockerfile` 与 `docker-compose.yml`（服
 - [PLAN.md](PLAN.md) — 重建计划、路线图细节、验收标准
 - [docs/13-changelog/](docs/13-changelog/CHANGELOG.md) — 历史变更日志与 SAMAN 集成审计
 - [README_id.md](README_id.md) — 印尼语翻译
+
+## 致谢与传承
+
+DhaherOS 是 **BlackHornet v7.0.0**（作者 mulkymalikuldhr / Dhaher-Labs）的官方延续 — rebrand 2026-11-11 per DL-37。原 BlackHornet 的设计、架构与 v7.0.0 干净重建均归原作者所有；DhaherOS 以新名称继续推进该项目。
 
 ## 安全
 

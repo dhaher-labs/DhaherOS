@@ -11,7 +11,7 @@ import logging
 from datetime import datetime
 from typing import Optional, List
 
-logger = logging.getLogger("blackhornet.RiskOfficer")
+logger = logging.getLogger("dhaheros.RiskOfficer")
 
 # HARDCODED RISK LIMITS - NO OVERRIDE POSSIBLE
 MAX_RISK_PER_TRADE = 0.005    # 0.5% max risk per trade

@@ -1,4 +1,4 @@
-# BlackHornet → Institution Platform ("ATLAS") — Rencana Ulang v1.0
+# DhaherOS → Institution Platform ("ATLAS") — Rencana Ulang v1.0
 
 - **Baseline:** 2026-10-30 · repo @ `66f279a` (v7.0.0-105) · status: RENCANA, belum diimplementasikan
 - **Sumber visi:** sesi strategi operator 28 Okt 2026 (ChatGPT share `6ae456bc-aebc-83ec-9dde-f25555bedfd8`) — dibaca utuh 30 Okt 2026
@@ -9,7 +9,7 @@
 
 ## 1. Inti visi (dari sesi operator)
 
-Operator tidak kekurangan agent, prompt, atau ide divisi. Yang kurang adalah **HARNESS** — satu lapisan kendali di atas semua coding agent/runtime. Rencana lama (BlackHornet v1–v6, AMC, Autonomous Organism) diarsipkan karena yang dibangun adalah organisasi/persona, bukan lapisan koordinasi yang bisa mengelola pekerjaan dari awal sampai selesai.
+Operator tidak kekurangan agent, prompt, atau ide divisi. Yang kurang adalah **HARNESS** — satu lapisan kendali di atas semua coding agent/runtime. Rencana lama (DhaherOS v1–v6, AMC, Autonomous Organism) diarsipkan karena yang dibangun adalah organisasi/persona, bukan lapisan koordinasi yang bisa mengelola pekerjaan dari awal sampai selesai.
 
 Keputusan arah baru: **platform institusi AI** — satu control plane yang dapat mengoperasikan banyak organisasi (Personal OS → Project OS → Institution OS), menggunakan banyak runtime (federasi), membentuk tim dari registry capability, dan mengembangkan kemampuan lewat bukti terukur.
 
@@ -22,7 +22,7 @@ Tiga pemisahan yang wajib dijaga:
 
 | # | Keputusan | Catatan |
 |---|-----------|---------|
-| D1 | **Rust-first** untuk core control plane | Python BlackHornet tetap hidup (posture PLAN.md: `BH_RUNTIME=python\|rust`, default python) |
+| D1 | **Rust-first** untuk core control plane | Python DhaherOS tetap hidup (posture PLAN.md: `BH_RUNTIME=python\|rust`, default python) |
 | D2 | **Federasi runtime** — satu orchestrator di atas banyak runtime | Runtime mempertahankan pipeline aslinya; core hanya menyimpan referensi/ringkasan koordinasi |
 | D3 | Executor awal: **OpenCode + Hermes Agent** via adapter kontrak | Orca & DeepSeek harness: karantina evaluasi, bukan dependency |
 | D4 | **D:\Obsidian** = pustaka pengetahuan utama | Knowledge store ≠ operational state; Librarian sebagai service |
@@ -37,7 +37,7 @@ Tiga pemisahan yang wajib dijaga:
 
 Fakta repo per 2026-10-30 (main `66f279a`, test 533 passed/28 skipped):
 
-| # | Domain target | Status BlackHornet sekarang | Gap utama |
+| # | Domain target | Status DhaherOS sekarang | Gap utama |
 |---|---------------|------------------------------|-----------|
 | 1 | Human Control & Experience | CLI launcher (`sovereign.py`, `integration/unified_launcher.py`); dev-server UI Next.js terpisah | Control room/dashboard terpadu, approval center |
 | 2 | Identity & Governance | `AGENTS.md`, konstitusi `Dhaher_Labs_Constitution_v1.0.md` (dokumen) | Registry identitas/role/policy yang di-enforce kode |
@@ -59,7 +59,7 @@ Plus 8 domain yang sering terlupakan (wajib ada di peta, tidak semua dibuat di M
 ## 4. Enam subsistem inti (Rust)
 
 1. **Control Plane** — task graph, scheduler, dependency tracking, lifecycle, retry, recovery, event processing. *Seed: `bh-rtd` (daemon, timers durable).*
-2. **Runtime Federation** — adapter kontrak: OpenCode, Hermes, colony runtime BlackHornet sendiri, executor generik CLI/API. *Seed: `bh-bridge-uds` + infinity adapter di `bh-rtd`.*
+2. **Runtime Federation** — adapter kontrak: OpenCode, Hermes, colony runtime DhaherOS sendiri, executor generik CLI/API. *Seed: `bh-bridge-uds` + infinity adapter di `bh-rtd`.*
 3. **Institution Engine** — organization/role/capability registry, team composition, domain packs, governance.
 4. **Access & Resource Fabric** — MCP Center, Credential Center (referensi, bukan salinan rahasia), tool gateway, repo lokal/cloud adapter, permission enforcement. *Seed: `bh-mcp-bridge`.*
 5. **Knowledge & State** — DB operasional, event log, project/world state, decision register, integrasi Obsidian (librarian).
@@ -84,7 +84,7 @@ rust/
 ├── policies/  schemas/  migrations/  tests/  docs/
 ```
 
-Pack Python BlackHornet (colony/omega/swarm) **tetap berjalan** dan menjadi salah satu runtime di federasi — tidak di-port.
+Pack Python DhaherOS (colony/omega/swarm) **tetap berjalan** dan menjadi salah satu runtime di federasi — tidak di-port.
 
 ## 5. Kontrak inti (wajib sebelum fitur)
 
@@ -105,7 +105,7 @@ Pack Python BlackHornet (colony/omega/swarm) **tetap berjalan** dan menjadi sala
 |------|-----|------------|
 | **B0** Konsolidasi + audit | Project Charter, ARCHITECTURE/SPEC, RUNTIME_CONTRACT, DOMAIN_CATALOG, SECURITY_MODEL, DECISIONS.md; audit faktual OpenCode & Hermes interface di mesin operator; inventaris repo lama | Spesifikasi tidak mencampur organisasi/runtime/capability/agent jadi satu konsep; hasil audit rebuild/reuse berbasis bukti |
 | **B1** Control plane | Task model, state machine, SQLite, event log, scheduler, cancel/retry/timeout/recovery (`bh-domain`, `bh-storage`, evolusi `bh-rtd`) | Skenario sukses/crash-restart/timeout/retry/permission-denial lulus otomatis; task dipulihkan setelah restart |
-| **B2** Satu alur nyata | 1 executor nyata (colony runtime BlackHornet via adapter) mengerjakan repo uji: konteks → eksekusi → test → artefak → laporan | Tidak ada keberhasilan palsu; hasil didukung bukti (build/test/diff) |
+| **B2** Satu alur nyata | 1 executor nyata (colony runtime DhaherOS via adapter) mengerjakan repo uji: konteks → eksekusi → test → artefak → laporan | Tidak ada keberhasilan palsu; hasil didukung bukti (build/test/diff) |
 | **B3** Federasi | Adapter OpenCode + Hermes; capability-based executor selection; penanganan kegagalan konsisten | Orchestrator memilih executor by capability terverifikasi; internal runtime tidak digabung |
 | **B4** Knowledge & Repo fabric | Obsidian integration, repository registry, project state, decision register, provenance | Sistem menemukan konteks tepat + melanjutkan pekerjaan tanpa seluruh riwayat chat |
 | **B5** Organization & capability engine | Role/capability registry, team templates, domain packs, policy binding | Organisasi berbeda didefinisikan via konfigurasi tanpa runtime baru per role |
@@ -128,7 +128,7 @@ Runtime federation (≥2 runtime via adapter, status+artefak terlacak) · Durabl
 2. Tidak ada ekspansi sebelum milestone lulus.
 3. Tidak ada keberhasilan tanpa bukti (build/test/diff/laporan).
 4. Tidak ada perubahan arsitektur diam-diam (semua keputusan dicatat).
-5. Tidak ada penghapusan/rewrite impulsif — BlackHornet Python tetap hidup di setiap fase.
+5. Tidak ada penghapusan/rewrite impulsif — DhaherOS Python tetap hidup di setiap fase.
 
 **Metrik sejak awal:** task selesai terverifikasi, tingkat kegagalan, intervensi manusia, biaya per hasil, waktu selesai, kualitas output, regresi pasca-perubahan. Target angka ditetapkan SETELAH baseline pengujian, bukan dikarang.
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET — Agent Swarm Memory Bridge
+DHAHEROS — Agent Swarm Memory Bridge
 ============================================
-Real-time shared memory sync between blackhornet agents
+Real-time shared memory sync between dhaheros agents
 and the dhaher-labs/agent swarm repository.
 
 Architecture:
-  blackhornet tools → SharedState (SQLite) → MemoryBridge → agent repo (Git)
+  dhaheros tools → SharedState (SQLite) → MemoryBridge → agent repo (Git)
                                                                     ↕
   Hermes Agent (Nous) ← hermes memory ← agent repo ← other bot clones
 
@@ -42,7 +42,7 @@ HERMES_HOME = Path(os.getenv("HERMES_HOME", Path.home() / ".hermes"))
 # ── State schema ───────────────────────────────────────────────────────
 STATE_SCHEMA = {
     "bot_id": BOT_NAME,
-    "agent": "blackhornet",
+    "agent": "dhaheros",
     "version": "4.0.0",
     "status": "RUNNING",  # RUNNING | IDLE | ERROR | SHUTDOWN
     "uptime_seconds": 0,
@@ -63,7 +63,7 @@ STATE_SCHEMA = {
 
 
 class MemoryBridge:
-    """Shared memory bridge: blackhornet ↔ Agent Swarm Repo"""
+    """Shared memory bridge: dhaheros ↔ Agent Swarm Repo"""
 
     def __init__(self, repo_path: Optional[str] = None):
         self.repo_path = Path(repo_path or HERMES_HOME / "agent-sync")
@@ -168,7 +168,7 @@ class MemoryBridge:
 
     def connect_shared_state(self, db_path: str) -> None:
         """
-        Connect to blackhornet SharedState (SQLite) and mirror
+        Connect to dhaheros SharedState (SQLite) and mirror
         trading data into the memory bridge.
         """
         try:
@@ -274,11 +274,11 @@ class MemoryBridge:
 def main():
     """Run memory bridge as standalone daemon."""
     import argparse
-    parser = argparse.ArgumentParser(description="blackhornet Memory Bridge")
+    parser = argparse.ArgumentParser(description="dhaheros Memory Bridge")
     parser.add_argument("--bot", default=None, help="Bot name for state file")
     parser.add_argument("--interval", type=int, default=None, help="Sync interval in seconds")
     parser.add_argument("--once", action="store_true", help="Sync once and exit")
-    parser.add_argument("--db", help="Path to blackhornet SQLite DB for state mirroring")
+    parser.add_argument("--db", help="Path to dhaheros SQLite DB for state mirroring")
     args = parser.parse_args()
 
     logging.basicConfig(

@@ -2,8 +2,8 @@
 # Multi-stage: builder → runtime
 FROM python:3.12-slim AS builder
 
-LABEL org.opencontainers.image.title="BlackHornet Omega"
-LABEL org.opencontainers.image.description="BlackHornet Ω — Autonomous AGI Engine (OmegaEngine CLI)"
+LABEL org.opencontainers.image.title="DhaherOS Omega"
+LABEL org.opencontainers.image.description="DhaherOS Ω — Autonomous AGI Engine (OmegaEngine CLI)"
 LABEL org.opencontainers.image.authors="Mulky Malikul Dhaher"
 LABEL org.opencontainers.image.version="5.0.0"
 LABEL org.opencontainers.image.licenses="MIT"

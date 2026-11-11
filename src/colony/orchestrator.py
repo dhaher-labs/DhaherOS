@@ -1,4 +1,4 @@
-"""EcosystemOrchestrator — autonomous control center for Blackhornet colonies.
+"""EcosystemOrchestrator — autonomous control center for DhaherOS colonies.
 
 Central hub that wires together:
   - ColonyRadar (peer discovery)
@@ -45,7 +45,7 @@ DOC_SYNC_INTERVAL = 300
 @dataclass
 class OrchestratorConfig:
     colony_id: str
-    colony_name: str = "blackhornet"
+    colony_name: str = "dhaheros"
     version: str = "5.0.0"
     sync_interval: int = SYNC_INTERVAL
     doc_sync_interval: int = DOC_SYNC_INTERVAL

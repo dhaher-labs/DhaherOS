@@ -65,7 +65,7 @@ class SecondBrain:
     def _new_id(self) -> str:
         return f"br-{int(time.time() * 1000)}-{os.urandom(2).hex()}"
 
-    def auto_capture(self, entry_type: str, content: str, project: str = "blackhornet", tags: Optional[list[str]] = None, code_snippet: str = "", file_path: str = "") -> BrainEntry:
+    def auto_capture(self, entry_type: str, content: str, project: str = "dhaheros", tags: Optional[list[str]] = None, code_snippet: str = "", file_path: str = "") -> BrainEntry:
         entry = BrainEntry(
             id=self._new_id(),
             entry_type=entry_type,

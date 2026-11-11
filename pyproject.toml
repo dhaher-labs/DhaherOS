@@ -3,13 +3,16 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "blackhornet-colony"
-version = "7.0.0"
-description = "BlackHornet Living AGI Colony — self-improving, immortal, autonomous bee-colony system"
+name = "dhaheros"
+version = "8.0.0"
+description = "DhaherOS Living AGI Colony — self-improving, immortal, autonomous bee-colony system (continuation of BlackHornet v7.0.0)"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "BlackHornet Contributors"},
+    {name = "DhaherOS Contributors"},
+]
+maintainers = [
+    {name = "Mulky Malikul Dhaher"},
 ]
 readme = "README.md"
 keywords = ["agi", "colony", "agents", "multi-agent", "autonomous"]
@@ -35,8 +38,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/blackhornet/colony"
-Repository = "https://github.com/blackhornet/colony"
+Homepage = "https://github.com/mulkymalikuldhaher/DhaherOS"
+Repository = "https://github.com/mulkymalikuldhaher/DhaherOS"
 
 [project.scripts]
 bh-colony = "src.integration.unified_launcher:main"

@@ -1,4 +1,4 @@
-"""Tests for BlackHornet CLI."""
+"""Tests for DhaherOS CLI."""
 
 from __future__ import annotations
 

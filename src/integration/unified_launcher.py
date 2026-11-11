@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class UnifiedLauncher:
-    """Unified entry point for the entire BlackHornet system.
+    """Unified entry point for the entire DhaherOS system.
 
     Starts and coordinates all modules:
     - Web UI (src/ui/)
@@ -235,7 +235,7 @@ class UnifiedLauncher:
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="BlackHornet Unified Launcher")
+    p = argparse.ArgumentParser(description="DhaherOS Unified Launcher")
     p.add_argument("--port", type=int, default=8080, help="Web UI port")
     p.add_argument("--tui", action="store_true", help="Start TUI instead of web")
     return p.parse_args(argv)

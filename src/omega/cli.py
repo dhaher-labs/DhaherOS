@@ -1,4 +1,4 @@
-"""BlackHornet CLI — start, stop, status, loop, score, sync."""
+"""DhaherOS CLI — start, stop, status, loop, score, sync."""
 
 from __future__ import annotations
 
@@ -89,7 +89,7 @@ def cmd_sync(args: argparse.Namespace) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="bh", description="BlackHornet Ω — Autonomous AGI Engine")
+    parser = argparse.ArgumentParser(prog="bh", description="DhaherOS Ω — Autonomous AGI Engine")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_start = sub.add_parser("start", help="Boot and start the OmegaEngine")

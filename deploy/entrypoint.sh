@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET — Docker/E2B Entrypoint
+# DHAHEROS — Docker/E2B Entrypoint
 # Starts the entire sovereign empire in one container
 # ============================================================================
 
@@ -20,7 +20,7 @@ die() { echo -e "${RED}  ✗ FATAL:${NC} $1"; exit 1; }
 
 echo ""
 echo -e "${CYAN}╔══════════════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║     🖤 BLACKHORNET — Docker/E2B Bootstrap       ║${NC}"
+echo -e "${CYAN}║     🖤 DHAHEROS — Docker/E2B Bootstrap       ║${NC}"
 echo -e "${CYAN}╚══════════════════════════════════════════════════╝${NC}"
 echo ""
 
@@ -167,7 +167,7 @@ health_check() {
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════════════════╗${NC}"
-echo -e "${GREEN}║     🖤 BLACKHORNET — OPERATIONAL                 ║${NC}"
+echo -e "${GREEN}║     🖤 DHAHEROS — OPERATIONAL                 ║${NC}"
 echo -e "${GREEN}╚══════════════════════════════════════════════════╝${NC}"
 echo ""
 echo -e "  ${CYAN}ProxyGateLLM:${NC}  http://localhost:3333 (LLM Gateway)"

@@ -1,7 +1,7 @@
-# Specification — BlackHornet Ω
+# Specification — DhaherOS Ω
 
 ## System Overview
-BlackHornet Ω is an autonomous AGI engine that manages the Dhaher Labs software ecosystem.
+DhaherOS Ω is an autonomous AGI engine that manages the Dhaher Labs software ecosystem.
 
 ## Modules
 

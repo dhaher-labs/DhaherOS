@@ -93,7 +93,7 @@ class AutoDiscoveryCLI:
         """
         parser = argparse.ArgumentParser(
             prog="bh discovery",
-            description="BlackHornet Auto-Discovery Engine",
+            description="DhaherOS Auto-Discovery Engine",
         )
         sub = parser.add_subparsers(dest="command", required=True)
 

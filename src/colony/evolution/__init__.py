@@ -1,5 +1,5 @@
 """
-BlackHornet Evolution Module
+DhaherOS Evolution Module
 
 Handles colony evolution, self-improvement, and adaptive learning.
 """

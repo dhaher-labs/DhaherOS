@@ -9,7 +9,7 @@ import logging
 from datetime import datetime
 from typing import Optional
 
-logger = logging.getLogger("blackhornet.Journal")
+logger = logging.getLogger("dhaheros.Journal")
 
 
 class JournalTool:

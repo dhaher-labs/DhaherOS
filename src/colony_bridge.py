@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET — MultiColony Integration Bridge v2
+DHAHEROS — MultiColony Integration Bridge v2
 ================================================
 Maps 6 capability domains with 30+ capabilities from the
-AI-MultiColony-Ecosystem into BLACKHORNET's runtime.
+AI-MultiColony-Ecosystem into DHAHEROS's runtime.
 """
 
 import os
@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from datetime import datetime, timezone
 
-logger = logging.getLogger("BlackHornet.MultiColony")
+logger = logging.getLogger("DhaherOS.MultiColony")
 
 MULTICOLONY_DIR = Path(os.getenv("MULTICOLONY_DIR",
     Path(__file__).parent.parent.parent / "AI-MultiColony-Ecosystem"))
@@ -89,7 +89,7 @@ COLONY_CAPABILITIES = {
 
 class ColonyBridge:
     """
-    Bridges BLACKHORNET nest with AI-MultiColony-Ecosystem patterns.
+    Bridges DHAHEROS nest with AI-MultiColony-Ecosystem patterns.
     Exposes 6 capability domains (core, agents, colony, harness, organism, memory)
     plus the original 11 quant_nanggroe engine capabilities.
     """
@@ -255,13 +255,13 @@ class ColonyBridge:
         }
 
     def integrate_to_hornet(self) -> Dict[str, bool]:
-        """Wire MultiColony patterns into BLACKHORNET."""
+        """Wire MultiColony patterns into DHAHEROS."""
         results = {}
         engine_dir = MULTICOLONY_DIR / "quant_nanggroe" / "engine"
         if engine_dir.exists():
             sys.path.insert(0, str(MULTICOLONY_DIR / "quant_nanggroe"))
             results["engine_path"] = True
-            logger.info("MultiColony engine path added to BLACKHORNET")
+            logger.info("MultiColony engine path added to DHAHEROS")
         else:
             results["engine_path"] = False
 
@@ -281,7 +281,7 @@ class ColonyBridge:
         s = self.status()
         health = self.report_health()
         print(f"\n{'='*60}")
-        print("  BLACKHORNET — MultiColony Bridge v2")
+        print("  DHAHEROS — MultiColony Bridge v2")
         print(f"{'='*60}")
         print(f"  Colony Available: {'YES' if s['available'] else 'NO'}")
         if not s['available']:
@@ -308,7 +308,7 @@ class ColonyBridge:
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="BLACKHORNET MultiColony Bridge v2")
+    parser = argparse.ArgumentParser(description="DHAHEROS MultiColony Bridge v2")
     parser.add_argument("--status", action="store_true", help="Colony status")
     parser.add_argument("--integrate", action="store_true", help="Wire into hornet")
     parser.add_argument("--strategies", action="store_true", help="List strategies")

@@ -1,4 +1,4 @@
-# PROJECT_CHARTER.md — Piagam Proyek BlackHornet → ATLAS (Artefak B0)
+# PROJECT_CHARTER.md — Piagam Proyek DhaherOS → ATLAS (Artefak B0)
 
 ## Status
 Accepted (2026-10-31) — bagian dari fase **B0 Konsolidasi + Audit** (ATLAS_PLAN.md §7).
@@ -20,7 +20,7 @@ strangler-fig Rust), `ROADMAP.md` (snapshot v7.0.0), `docs/00-vision/VISION.md`,
 ## 2. Masalah inti (ATLAS_PLAN §1)
 Operator tidak kekurangan agent, prompt, atau ide divisi. Yang kurang adalah
 **HARNESS** — satu lapisan kendali di atas semua coding agent/runtime. Rencana lama
-(BlackHornet v1–v6, AMC, Autonomous Organism) diarsipkan karena yang dibangun adalah
+(DhaherOS v1–v6, AMC, Autonomous Organism) diarsipkan karena yang dibangun adalah
 organisasi/persona, bukan lapisan koordinasi yang bisa mengelola pekerjaan dari awal
 sampai selesai.
 
@@ -73,7 +73,7 @@ konsep; hasil audit rebuild/reuse berbasis bukti.
 ## 7. Roadmap fase (ringkas — gate penuh di ATLAS_PLAN §7)
 B0 Konsolidasi+audit → B1 Control plane (task model, state machine, SQLite, event log;
 skenario crash-restart/timeout/retry/permission-denial lulus otomatis) → B2+ … →
-gate per fase di ATLAS_PLAN.md §7. Python BlackHornet tetap hidup di setiap fase
+gate per fase di ATLAS_PLAN.md §7. Python DhaherOS tetap hidup di setiap fase
 (aturan #5 §9).
 
 ## 8. Acceptance criteria global (ATLAS_PLAN §8 — verbatim)
@@ -92,7 +92,7 @@ tertelusur).
 2. Tidak ada ekspansi sebelum milestone lulus.
 3. Tidak ada keberhasilan tanpa bukti (build/test/diff/laporan).
 4. Tidak ada perubahan arsitektur diam-diam (semua keputusan dicatat).
-5. Tidak ada penghapusan/rewrite impulsif — BlackHornet Python tetap hidup di setiap fase.
+5. Tidak ada penghapusan/rewrite impulsif — DhaherOS Python tetap hidup di setiap fase.
 
 ## 10. Metrik sejak awal (ATLAS_PLAN §9)
 Task selesai terverifikasi, tingkat kegagalan, intervensi manusia, biaya per hasil,

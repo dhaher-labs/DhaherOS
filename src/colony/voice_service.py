@@ -9,7 +9,7 @@ Provides:
 Usage:
     voice = VoiceService()
     await voice.say("System is healthy")
-    voice.set_wake_word("blackhornet")
+    voice.set_wake_word("dhaheros")
     voice.trigger_wake_word()
 """
 

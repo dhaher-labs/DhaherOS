@@ -2,7 +2,7 @@
 
 ## Overview
 
-BlackHornet v2.0 introduces 4 research-backed modules that enable
+DhaherOS v2.0 introduces 4 research-backed modules that enable
 self-evolution, skill crystallization, resource governance, and
 multi-agent coordination engineering. All modules are integrated via
 `EvolutionBridge` — a single hook point into the AgentLoop.

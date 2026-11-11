@@ -1,9 +1,9 @@
-# Glossary — BlackHornet Ω
+# Glossary — DhaherOS Ω
 
 | Term | Definition |
 |------|------------|
 | AGI | Artificial General Intelligence — autonomous system capable of any intellectual task |
-| BH | BlackHornet Ω — the autonomous AGI of Dhaher Labs |
+| BH | DhaherOS Ω — the autonomous AGI of Dhaher Labs |
 | SCS | Self-Confidence System — measures and calibrates confidence for every action |
 | L0-L9 | Consciousness layers (L0 Brain through L9 Oracle) |
 | Council | 15-persona multi-perspective parallel debate |

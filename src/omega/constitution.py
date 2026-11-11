@@ -1,4 +1,4 @@
-"""AI-Engineering-OS Constitution — base law of BlackHornet."""
+"""AI-Engineering-OS Constitution — base law of DhaherOS."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ class Constitution:
 
     def _detect_root(self) -> str:
         for p in [os.environ.get("DHAHERLABS") or os.path.join(os.path.expanduser("~"), "dhaherlabs"), os.getcwd()]:
-            bh = os.path.join(p, "blackhornet-worktree")
+            bh = os.path.join(p, "dhaheros-worktree")
             if os.path.isdir(bh):
                 return bh
         return os.getcwd()

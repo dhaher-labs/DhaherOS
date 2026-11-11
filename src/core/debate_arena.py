@@ -1,7 +1,7 @@
 """Debate Arena — Proposer / Challenger / Judge topology.
 
 Implements SamanAI §3.2 DEBATE & GOVERNANCE layer.
-Wired to BlackHornet core via ast_sanitizer and council.
+Wired to DhaherOS core via ast_sanitizer and council.
 """
 
 from __future__ import annotations

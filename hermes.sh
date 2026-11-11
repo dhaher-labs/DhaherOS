@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET - Main Control Script
+# DHAHEROS - Main Control Script
 # ============================================================================
 # Usage: ./hermes.sh [start|stop|restart|status|logs|watchdog|health|install]
 #
@@ -50,7 +50,7 @@ start() {
         return 0
     fi
 
-    log "${BOLD}Starting BLACKHORNET...${NC}"
+    log "${BOLD}Starting DHAHEROS...${NC}"
     mkdir -p "$LOG_DIR"
     mkdir -p "$BASE_DIR/.hermes"
 
@@ -72,7 +72,7 @@ start() {
 
     # Verify watchdog started
     if kill -0 "$WDOG_PID" 2>/dev/null; then
-        log "${GREEN}${BOLD}Watchdog RUNNING - BLACKHORNET is Always-On!${NC}"
+        log "${GREEN}${BOLD}Watchdog RUNNING - DHAHEROS is Always-On!${NC}"
         log "  Watchdog PID: $WDOG_PID"
         log "  Check Interval: 10s"
         log "  Max Restarts/Hour: 10"
@@ -99,7 +99,7 @@ start() {
 # ============================================================================
 
 stop() {
-    log "Stopping BLACKHORNET..."
+    log "Stopping DHAHEROS..."
 
     # Stop watchdog first (so it doesn't restart Hermes)
     if [ -f "$WATCHDOG_PID" ]; then
@@ -138,7 +138,7 @@ stop() {
     # Kill any remaining Hermes processes
     pkill -f "hermes_quant.py" 2>/dev/null || true
 
-    log "${GREEN}BLACKHORNET stopped.${NC}"
+    log "${GREEN}DHAHEROS stopped.${NC}"
 }
 
 # ============================================================================
@@ -147,7 +147,7 @@ stop() {
 
 status() {
     echo ""
-    log "${BOLD}${CYAN}═══ BLACKHORNET STATUS ═══${NC}"
+    log "${BOLD}${CYAN}═══ DHAHEROS STATUS ═══${NC}"
     echo ""
 
     # Check Hermes
@@ -261,7 +261,7 @@ watchdog_start() {
 # ============================================================================
 
 install_on_boot() {
-    log "${BOLD}Installing BLACKHORNET as system service...${NC}"
+    log "${BOLD}Installing DHAHEROS as system service...${NC}"
     echo ""
 
     # Detect environment
@@ -281,7 +281,7 @@ install_on_boot() {
 install_systemd() {
     log "Installing systemd service..."
 
-    cat > /tmp/blackhornet.service << EOF
+    cat > /tmp/dhaheros.service << EOF
 [Unit]
 Description=Hermes Quant Operating System - Autonomous Trading
 After=network-online.target
@@ -304,12 +304,12 @@ StandardError=append:$LOG_DIR/systemd.log
 WantedBy=multi-user.target
 EOF
 
-    sudo cp /tmp/blackhornet.service /etc/systemd/system/
+    sudo cp /tmp/dhaheros.service /etc/systemd/system/
     sudo systemctl daemon-reload
-    sudo systemctl enable blackhornet
+    sudo systemctl enable dhaheros
     log "${GREEN}Systemd service installed and enabled!${NC}"
-    log "Start: sudo systemctl start blackhornet"
-    log "Status: sudo systemctl status blackhornet"
+    log "Start: sudo systemctl start dhaheros"
+    log "Status: sudo systemctl status dhaheros"
 }
 
 install_termux_boot() {
@@ -318,9 +318,9 @@ install_termux_boot() {
     BOOT_DIR="$HOME/.termux/boot"
     mkdir -p "$BOOT_DIR"
 
-    cat > "$BOOT_DIR/blackhornet.sh" << EOF
+    cat > "$BOOT_DIR/dhaheros.sh" << EOF
 #!/data/data/com.termux/files/usr/bin/bash
-# BLACKHORNET - Auto-start on boot
+# DHAHEROS - Auto-start on boot
 
 # Wait for network
 sleep 10
@@ -330,10 +330,10 @@ cd $BASE_DIR
 bash hermes.sh start
 EOF
 
-    chmod +x "$BOOT_DIR/blackhornet.sh"
+    chmod +x "$BOOT_DIR/dhaheros.sh"
     log "${GREEN}Termux:Boot installed!${NC}"
     log "Install Termux:Boot from F-Droid for auto-start on device boot."
-    log "File: $BOOT_DIR/blackhornet.sh"
+    log "File: $BOOT_DIR/dhaheros.sh"
 }
 
 install_cron() {
@@ -487,7 +487,7 @@ agent_status() {
     # Connected repos
     echo ""
     info "Connected Repos:"
-    echo "  📊 blackhornet: $BASE_DIR"
+    echo "  📊 dhaheros: $BASE_DIR"
     echo "  🧠 Agent Swarm:   $HOME/.hermes/agent-sync"
     echo "  🤖 Hermes Agent:  $HOME/.hermes/hermes-agent"
     echo ""
@@ -574,9 +574,9 @@ case "${1:-start}" in
         echo "Usage: $0 {start|stop|restart|status|logs|health|watchdog|install|bootstrap|agent-start|agent-stop|agent-status|bridge-start|bridge-stop|bridge-status|swarm|all}"
         echo ""
         echo "Core:"
-        echo "  start         - Start BLACKHORNET (with watchdog)"
-        echo "  stop          - Stop BLACKHORNET"
-        echo "  restart       - Restart BLACKHORNET"
+        echo "  start         - Start DHAHEROS (with watchdog)"
+        echo "  stop          - Stop DHAHEROS"
+        echo "  restart       - Restart DHAHEROS"
         echo "  status        - Show system status"
         echo "  logs          - Tail logs [hermes|watchdog|keeper|all]"
         echo "  health        - Run health check"

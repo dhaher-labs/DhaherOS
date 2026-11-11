@@ -1,4 +1,4 @@
-# BlackHornet Rust workspace — Phase 0 scaffold + Phase 1 bridges
+# DhaherOS Rust workspace — Phase 0 scaffold + Phase 1 bridges
 # ("bridges before ports").
 # See rust/README.md for scope; PLAN.md §4 for the full strangler-fig roadmap.
 [workspace]
@@ -15,7 +15,7 @@ edition = "2024"
 # toolchains fail with a clear message instead of a cryptic error.
 rust-version = "1.85"
 license = "MIT"
-repository = "https://github.com/mulkymalikuldhaher/BlackHornet"
+repository = "https://github.com/mulkymalikuldhaher/DhaherOS"
 
 [workspace.dependencies]
 # hydro-project/infinity runtime, pinned to the exact 0.2.0 release

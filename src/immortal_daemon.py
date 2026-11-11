@@ -40,7 +40,7 @@ HERMES_HOME = Path(os.getenv("HERMES_HOME", Path.home() / ".hermes"))
 BASE_DIR = Path(__file__).parent.parent
 CHECK_INTERVAL = int(os.getenv("DAEMON_CHECK_INTERVAL", "300"))  # 5 min
 ECOSYSTEM_REPOS = [
-    "blackhornet",
+    "dhaheros",
     "Quant-Nanggroe-AI",
     "AI-MultiColony-Ecosystem",
     "Vibe-Trading",
@@ -68,7 +68,7 @@ class ImmortalDaemon:
     def __init__(self):
         self.swarm = SwarmProtocol(
             agent_type="guardian",
-            repo="blackhornet",
+            repo="dhaheros",
             version="4.0.0"
         )
         self.running = True
@@ -105,7 +105,7 @@ class ImmortalDaemon:
 
         # Check each repo
         for repo in ECOSYSTEM_REPOS:
-            repo_dir = BASE_DIR if repo == "blackhornet" else HERMES_HOME / "spawns" / repo
+            repo_dir = BASE_DIR if repo == "dhaheros" else HERMES_HOME / "spawns" / repo
             repo_status: Dict[str, Any] = {
                 "exists": repo_dir.exists(),
                 "is_git": (repo_dir / ".git").exists() if repo_dir.exists() else False,
@@ -147,7 +147,7 @@ class ImmortalDaemon:
 
     def upgrade_ecosystem_repo(self, repo: str) -> bool:
         """Pull latest and re-install for a single repo."""
-        repo_dir = BASE_DIR if repo == "blackhornet" else HERMES_HOME / "spawns" / repo
+        repo_dir = BASE_DIR if repo == "dhaheros" else HERMES_HOME / "spawns" / repo
 
         if not repo_dir.exists():
             logger.warning(f"Repo {repo} not found at {repo_dir}")
@@ -207,7 +207,7 @@ class ImmortalDaemon:
         """Ensure system remains oriented to Dhaher Lab / Sovereign."""
         alignment = {
             "sovereign": "Mulky Malikul Dhaher",
-            "ecosystem": "BLACKHORNET",
+            "ecosystem": "DHAHEROS",
             "dhaher_lab_oriented": True,
             "services": ["daemon", "gateway", "memory", "swarm", "colony"],
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -232,7 +232,7 @@ class ImmortalDaemon:
 
     def ensure_bootstrap_in_repo(self, repo: str) -> bool:
         """Make sure repo has bootstrap.sh for auto-install on clone."""
-        repo_dir = BASE_DIR if repo == "blackhornet" else HERMES_HOME / "spawns" / repo
+        repo_dir = BASE_DIR if repo == "dhaheros" else HERMES_HOME / "spawns" / repo
 
         if not repo_dir.exists():
             return False
@@ -252,7 +252,7 @@ class ImmortalDaemon:
                 logger.info(f"[EXPAND] Bootstrap copied to {repo}")
 
         # Copy swarm protocol if missing
-        if not swarm_proto_path.exists() and repo != "blackhornet":
+        if not swarm_proto_path.exists() and repo != "dhaheros":
             (repo_dir / "src").mkdir(exist_ok=True)
             source_swarm = BASE_DIR / "src" / "swarm_protocol.py"
             if source_swarm.exists():

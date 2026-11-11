@@ -1,7 +1,7 @@
 //! `bh-mcp-bridge` — the Phase 1 **infinity-mcp-bridge** deliverable
 //! (PLAN.md §4 "Bridges before ports").
 //!
-//! This crate bridges Infinity's tool surface to BlackHornet's Python
+//! This crate bridges Infinity's tool surface to DhaherOS's Python
 //! `agent_tools` **without porting any tool logic**: tools keep living in
 //! `src/agent_tools/` (the registry with circuit breaker, rate limiting and
 //! permission checks stays Python). Two halves:
@@ -44,7 +44,7 @@
 //! `infinity-mcp-bridge =0.2.0` crate; this local crate is deliberately
 //! named `bh-mcp-bridge` so the two can never be confused in `Cargo.lock`.
 //! It delivers the Phase 1 "infinity-mcp-bridge wired to BH agent_tools"
-//! exit criterion from the BlackHornet side.
+//! exit criterion from the DhaherOS side.
 //!
 //! Error philosophy (matches `bh-rtd` conventions): transport and protocol
 //! failures surface as [`BhToolsError::Transport`]; a tool call whose

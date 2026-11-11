@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET — QNA Integration Bridge
+DHAHEROS — QNA Integration Bridge
 =====================================
 Lazy-imports Quant Nanggroe AI modules and routes queries to the
 appropriate engine subsystem.
@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from enum import Enum
 
-logger = logging.getLogger("BlackHornet.QNA")
+logger = logging.getLogger("DhaherOS.QNA")
 
 
 class QueryDomain(Enum):
@@ -43,7 +43,7 @@ class QNAResponse:
 
 
 class QNAIntegrationBridge:
-    """Lazy-import bridge from BLACKHORNET into Quant Nanggroe AI engine."""
+    """Lazy-import bridge from DHAHEROS into Quant Nanggroe AI engine."""
 
     def __init__(self):
         self._initialized = False

@@ -137,7 +137,7 @@ class AgentToolsUdsServer:
     Usage::
 
         server = AgentToolsUdsServer()  # default registry = all concrete tools
-        await server.start("/run/blackhornet/agent_tools.sock")
+        await server.start("/run/dhaheros/agent_tools.sock")
         await server.serve_forever()    # or: await server.stop()
     """
 

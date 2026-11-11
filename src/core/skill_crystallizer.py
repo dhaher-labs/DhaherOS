@@ -1,5 +1,5 @@
 """
-Skill Crystallizer — Self-evolving skill system for BlackHornet agents.
+Skill Crystallizer — Self-evolving skill system for DhaherOS agents.
 Inspired by GenericAgent (arXiv:2604.17091), EvolveR (arXiv:2510.16079),
 and Recursive Knowledge Crystallization (Tanaike, 2026).
 

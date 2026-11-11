@@ -1,6 +1,6 @@
-"""BlackHornet Ω — Autonomous AGI Engine.
+"""DhaherOS Ω — Autonomous AGI Engine.
 
-Lord Omega v5.0 founding pillars embedded into BlackHornet:
+Lord Omega v5.0 founding pillars embedded into DhaherOS:
   - Constitution (AI-Engineering-OS)
   - Self-Confidence System (SCS)
   - Multi-Perspective Council (15 personas)
@@ -101,7 +101,7 @@ class OmegaEngine:
             loop_report["council"] = council_result
 
             priority_q = loop_report.get("priority", [])
-            target = priority_q[0]["name"] if priority_q else "blackhornet"
+            target = priority_q[0]["name"] if priority_q else "dhaheros"
             loop_report["agent_cycle"] = self._run_agent_cycle(f"Advance {target} — close score gaps")
 
             sync.run()

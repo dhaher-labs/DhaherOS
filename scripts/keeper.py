@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BLACKHORNET - Keeper Daemon
+DHAHEROS - Keeper Daemon
 ================================
 Cron-friendly health check + auto-restart.
 Runs every minute via cron or Termux:Boot.
@@ -17,7 +17,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent.resolve()
 BH_SCRIPT = BASE_DIR / "src" / "bh_quant.py"
 WATCHDOG_SCRIPT = BASE_DIR / "src" / "watchdog.py"
-PID_FILE = BASE_DIR / "blackhornet.pid"
+PID_FILE = BASE_DIR / "dhaheros.pid"
 WATCHDOG_PID_FILE = BASE_DIR / "watchdog.pid"
 LOG_DIR = BASE_DIR / "logs"
 CONFIG_ENV = BASE_DIR / "config" / ".env"
@@ -66,7 +66,7 @@ def start_watchdog():
 
 def start_bh_direct():
     """Start BH directly (fallback if no watchdog)"""
-    log("Starting BLACKHORNET directly...")
+    log("Starting DHAHEROS directly...")
     subprocess.Popen(
         [sys.executable, str(BH_SCRIPT)],
         stdout=open(LOG_DIR / "stdout.log", 'a'),
@@ -107,7 +107,7 @@ def main():
         # Don't double-start - let watchdog handle it
 
     else:
-        log("All systems operational. BLACKHORNET is eternal.")
+        log("All systems operational. DHAHEROS is eternal.")
 
     log("Keeper check complete.")
 

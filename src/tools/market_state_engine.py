@@ -11,7 +11,7 @@ import logging
 from datetime import datetime
 from typing import Dict
 
-logger = logging.getLogger("blackhornet.MarketState")
+logger = logging.getLogger("dhaheros.MarketState")
 
 
 class MarketStateEngine:
@@ -20,7 +20,7 @@ class MarketStateEngine:
     If NO_TRADE → entire system stops.
 
     Source: Quant-Nanggroe-AI v15.2.0 Market State Engine
-    Adapted for BLACKHORNET.
+    Adapted for DHAHEROS.
     """
 
     def __init__(self):

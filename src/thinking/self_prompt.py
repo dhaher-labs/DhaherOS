@@ -2,7 +2,7 @@
 
 Produces dynamic system prompt blocks that incorporate user profile,
 preferences, learned topics, recent context, and active goals to
-create adaptive self-prompting for the BlackHornet agent.
+create adaptive self-prompting for the DhaherOS agent.
 """
 
 from __future__ import annotations

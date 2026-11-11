@@ -2,7 +2,7 @@
 
 Phase 0 remainder of the Rust + Infinity roadmap (PLAN.md §4), folded into
 the Phase 2 runtime wedge (Task 19). This document pins the wire contracts
-between the Python BlackHornet colony and the `bh-rtd` Rust runtime daemon.
+between the Python DhaherOS colony and the `bh-rtd` Rust runtime daemon.
 It describes **what is implemented** — nothing here is aspirational; anything
 not yet built is listed under "Deferred".
 
@@ -81,7 +81,7 @@ here).
 
 * `name` — colony-visible identity (required, non-empty; duplicates are a
   business refusal).
-* `role` — BlackHornet role vocabulary, default `"worker"`.
+* `role` — DhaherOS role vocabulary, default `"worker"`.
 * `instructions` — system instructions for the agent's LLM turns (optional).
 
 The daemon assigns `agent_id` (colony-visible) and `thread_id` (Infinity

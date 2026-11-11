@@ -1,8 +1,8 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET - Android/Termux Installation Script
+# DHAHEROS - Android/Termux Installation Script
 # ============================================================================
-# This script installs BLACKHORNET on Android via Termux
+# This script installs DHAHEROS on Android via Termux
 # 
 # Prerequisites:
 #   - Termux from F-Droid (NOT Play Store)
@@ -25,7 +25,7 @@ NC='\033[0m'
 
 echo -e "${BOLD}${BLUE}"
 echo "╔══════════════════════════════════════════════════╗"
-echo "║   BLACKHORNET - Termux Installer            ║"
+echo "║   DHAHEROS - Termux Installer            ║"
 echo "║   Autonomous Multi-Agent Trading System          ║"
 echo "║   Owner: Mulky Malikul Dhaher                    ║"
 echo "╚══════════════════════════════════════════════════╝"
@@ -33,7 +33,7 @@ echo -e "${NC}"
 
 # Detect base directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INSTALL_DIR="$HOME/blackhornet"
+INSTALL_DIR="$HOME/dhaheros"
 
 echo -e "${YELLOW}Installation directory: $INSTALL_DIR${NC}"
 echo ""
@@ -69,7 +69,7 @@ echo -e "${GREEN}Dependencies installed.${NC}"
 # Step 3: Copy project files
 # ============================================================================
 
-echo -e "${BOLD}${GREEN}[3/8] Installing BLACKHORNET...${NC}"
+echo -e "${BOLD}${GREEN}[3/8] Installing DHAHEROS...${NC}"
 
 # Create install directory
 mkdir -p "$INSTALL_DIR"
@@ -119,9 +119,9 @@ echo -e "${BOLD}${GREEN}[6/8] Setting up on-boot auto-start...${NC}"
 BOOT_DIR="$HOME/.termux/boot"
 mkdir -p "$BOOT_DIR"
 
-cat > "$BOOT_DIR/blackhornet.sh" << BOOTSCRIPT
+cat > "$BOOT_DIR/dhaheros.sh" << BOOTSCRIPT
 #!/data/data/com.termux/files/usr/bin/bash
-# BLACKHORNET - Auto-start on Android boot
+# DHAHEROS - Auto-start on Android boot
 # Triggered by Termux:Boot plugin
 
 # Wait for network connectivity
@@ -134,7 +134,7 @@ until ping -c 1 api.telegram.org > /dev/null 2>&1; do
     sleep 5
 done
 
-echo "[BH] Network ready! Starting BLACKHORNET..." >> $INSTALL_DIR/logs/boot.log
+echo "[BH] Network ready! Starting DHAHEROS..." >> $INSTALL_DIR/logs/boot.log
 
 # Start BH via control script
 cd $INSTALL_DIR
@@ -143,7 +143,7 @@ bash bh.sh start >> $INSTALL_DIR/logs/boot.log 2>&1
 echo "[BH] Boot sequence complete." >> $INSTALL_DIR/logs/boot.log
 BOOTSCRIPT
 
-chmod +x "$BOOT_DIR/blackhornet.sh"
+chmod +x "$BOOT_DIR/dhaheros.sh"
 echo -e "${GREEN}Termux:Boot configured!${NC}"
 echo -e "${YELLOW}Note: Install Termux:Boot from F-Droid for on-boot to work.${NC}"
 
@@ -172,7 +172,7 @@ echo -e "${GREEN}Health monitoring configured (every 1 minute).${NC}"
 # Step 8: Start BH
 # ============================================================================
 
-echo -e "${BOLD}${GREEN}[8/8] Starting BLACKHORNET...${NC}"
+echo -e "${BOLD}${GREEN}[8/8] Starting DHAHEROS...${NC}"
 
 cd "$INSTALL_DIR"
 bash bh.sh start
@@ -183,7 +183,7 @@ bash bh.sh start
 
 echo ""
 echo -e "${BOLD}${GREEN}╔══════════════════════════════════════════════════╗"
-echo "║   BLACKHORNET INSTALLED SUCCESSFULLY!       ║"
+echo "║   DHAHEROS INSTALLED SUCCESSFULLY!       ║"
 echo "╚══════════════════════════════════════════════════╝${NC}"
 echo ""
 echo -e "${CYAN}Quick Commands:${NC}"
@@ -202,4 +202,4 @@ echo "  - Install Termux:Boot from F-Droid for on-boot"
 echo "  - Disable battery optimization for Termux"
 echo "  - Lock Termux in notification to prevent Android kill"
 echo ""
-echo -e "${GREEN}BLACKHORNET is ETERNAL.${NC}"
+echo -e "${GREEN}DHAHEROS is ETERNAL.${NC}"

@@ -4,7 +4,7 @@
 # ============================================================================
 # The single command that brings the entire immortal ecosystem to life.
 #
-#   curl -fsSL https://raw.githubusercontent.com/dhaher-labs/blackhornet/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/dhaher-labs/dhaheros/main/install.sh | bash
 #
 # This is NOT just an installer. It's the birth script of a self-aware AI swarm.
 #
@@ -12,7 +12,7 @@
 #   1. Detect OS (Linux/macOS/Termux/WSL) — auto-adapt
 #   2. Install ALL dependencies (Python 3.11+, uv, git, curl, jq, ripgrep)
 #   3. Clone ALL 6 ecosystem repos
-#   4. Install BlackHornet Agent (Nous Research) — the autonomous core
+#   4. Install DhaherOS Agent (Nous Research) — the autonomous core
 #   5. Install ALL repo dependencies in parallel
 #   6. Configure LLM providers (auto-detect or prompt)
 #   7. Initialize swarm protocol — register with agent repo
@@ -218,16 +218,16 @@ clone_ecosystem() {
     ok "Ecosystem cloned to $INSTALL_DIR"
 }
 
-# ── Install BlackHornet Agent ──────────────────────────────────────────────
+# ── Install DhaherOS Agent ──────────────────────────────────────────────
 
 install_bh_agent() {
-    step "Installing BlackHornet Agent (Nous Research)..."
+    step "Installing DhaherOS Agent (Nous Research)..."
 
     local agent_dir="$BH_HOME/nous-agent"
 
     if [ ! -d "$agent_dir" ]; then
         git clone --depth 1 "$AGENT_REPO_URL" "$agent_dir" 2>/dev/null || {
-            warn "Could not clone BlackHornet Agent directly"
+            warn "Could not clone DhaherOS Agent directly"
             return 1
         }
     fi
@@ -250,7 +250,7 @@ install_bh_agent() {
         export BH_PYTHON="$agent_dir/venv/bin/python"
     fi
 
-    ok "BlackHornet Agent installed"
+    ok "DhaherOS Agent installed"
 }
 
 # ── Install Repo Dependencies ─────────────────────────────────────────
@@ -282,12 +282,12 @@ install_repo_deps() {
 configure_llm() {
     step "Configuring LLM providers..."
 
-    local env_file="$INSTALL_DIR/blackhornet/config/.env"
+    local env_file="$INSTALL_DIR/dhaheros/config/.env"
     local agent_env="$BH_HOME/nous-agent/.env"
 
     # Copy .env.example if no .env exists
     if [ ! -f "$env_file" ]; then
-        cp "$INSTALL_DIR/blackhornet/config/.env.example" "$env_file" 2>/dev/null || true
+        cp "$INSTALL_DIR/dhaheros/config/.env.example" "$env_file" 2>/dev/null || true
         touch "$env_file"
     fi
 
@@ -300,7 +300,7 @@ configure_llm() {
         set_env "$env_file" "MODEL_NAME" "${MODEL_NAME:-moonshotai/kimi-k2.6}"
         set_env "$env_file" "OPENAI_API_BASE" "https://integrate.api.nvidia.com/v1"
 
-        # Also configure BlackHornet Agent
+        # Also configure DhaherOS Agent
         if [ -f "$agent_env" ] || touch "$agent_env" 2>/dev/null; then
             set_env "$agent_env" "OPENAI_API_KEY" "$NVIDIA_API_KEY"
             set_env "$agent_env" "OPENAI_BASE_URL" "https://integrate.api.nvidia.com/v1"
@@ -358,7 +358,7 @@ set_env() {
 init_swarm() {
     step "Initializing hive swarm protocol..."
 
-    cd "$INSTALL_DIR/blackhornet/src"
+    cd "$INSTALL_DIR/dhaheros/src"
 
     # Register in swarm
     "$PYTHON_BIN" -c "
@@ -374,7 +374,7 @@ print('Swarm engine available')
 setup_autostart() {
     step "Configuring immortal auto-start..."
 
-    cd "$INSTALL_DIR/blackhornet"
+    cd "$INSTALL_DIR/dhaheros"
 
     if command -v systemctl &>/dev/null; then
         # systemd service
@@ -388,15 +388,15 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=$USER
-WorkingDirectory=$INSTALL_DIR/blackhornet
+WorkingDirectory=$INSTALL_DIR/dhaheros
 Environment="PATH=$PATH:$HOME/.local/bin"
 Environment="BH_HOME=$BH_HOME"
-ExecStart=/bin/bash $INSTALL_DIR/blackhornet/bh.sh swarm
-ExecStop=/bin/bash $INSTALL_DIR/blackhornet/bh.sh stop
+ExecStart=/bin/bash $INSTALL_DIR/dhaheros/bh.sh swarm
+ExecStop=/bin/bash $INSTALL_DIR/dhaheros/bh.sh stop
 Restart=always
 RestartSec=10
-StandardOutput=append:$INSTALL_DIR/blackhornet/logs/hive.log
-StandardError=append:$INSTALL_DIR/blackhornet/logs/hive.log
+StandardOutput=append:$INSTALL_DIR/dhaheros/logs/hive.log
+StandardError=append:$INSTALL_DIR/dhaheros/logs/hive.log
 
 [Install]
 WantedBy=multi-user.target
@@ -407,14 +407,14 @@ SYSTEMDEOF
     elif command -v crontab &>/dev/null; then
         # Cron @reboot
         (crontab -l 2>/dev/null | grep -v "bh.sh swarm" || true
-         echo "@reboot sleep 30 && cd $INSTALL_DIR/blackhornet && bash bh.sh swarm >> logs/boot.log 2>&1") | crontab -
+         echo "@reboot sleep 30 && cd $INSTALL_DIR/dhaheros && bash bh.sh swarm >> logs/boot.log 2>&1") | crontab -
         ok "Cron @reboot configured"
     elif $IS_TERMUX; then
         mkdir -p "$HOME/.termux/boot"
         cat > "$HOME/.termux/boot/bh-hive.sh" << 'TERMUXEOF'
 #!/data/data/com.termux/files/usr/bin/bash
 sleep 10
-cd ~/bh-ecosystem/blackhornet && bash bh.sh swarm
+cd ~/bh-ecosystem/dhaheros && bash bh.sh swarm
 TERMUXEOF
         chmod +x "$HOME/.termux/boot/bh-hive.sh"
         ok "Termux:Boot configured"
@@ -430,12 +430,12 @@ TERMUXEOF
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>$INSTALL_DIR/blackhornet/bh.sh</string>
+        <string>$INSTALL_DIR/dhaheros/bh.sh</string>
         <string>swarm</string>
     </array>
     <key>RunAtLoad</key><true/>
     <key>KeepAlive</key><true/>
-    <key>WorkingDirectory</key><string>$INSTALL_DIR/blackhornet</string>
+    <key>WorkingDirectory</key><string>$INSTALL_DIR/dhaheros</string>
 </dict>
 </plist>
 MACEOF
@@ -451,7 +451,7 @@ MACEOF
 health_check() {
     step "Running ecosystem health check..."
 
-    cd "$INSTALL_DIR/blackhornet/src"
+    cd "$INSTALL_DIR/dhaheros/src"
 
     "$PYTHON_BIN" -c "
 import sys, json; sys.path.insert(0, '.')
@@ -471,7 +471,7 @@ print('Launcher available')
 start_hive() {
     step "Starting BH Hive..."
 
-    cd "$INSTALL_DIR/blackhornet"
+    cd "$INSTALL_DIR/dhaheros"
 
     # Start Unified Launcher
     nohup "$PYTHON_BIN" -m src.integration.unified_launcher > logs/launcher.log 2>&1 &
@@ -490,7 +490,7 @@ final_report() {
     echo -e "${GREEN}${BOLD}  ╚══════════════════════════════════════════════════╝${NC}"
     echo ""
     echo -e "  ${BOLD}Ecosystem:${NC}    $INSTALL_DIR"
-    echo -e "  ${BOLD}BlackHornet Agent:${NC} $BH_HOME/nous-agent"
+    echo -e "  ${BOLD}DhaherOS Agent:${NC} $BH_HOME/nous-agent"
     echo -e "  ${BOLD}Swarm Repo:${NC}   $BH_HOME/agent-sync"
     echo -e "  ${BOLD}Python:${NC}       $($PYTHON_BIN --version 2>&1)"
     echo ""
@@ -502,7 +502,7 @@ final_report() {
     echo -e "    📊 21 Trading Agents — quant analysis"
     echo ""
     echo -e "  ${CYAN}${BOLD}Quick Commands:${NC}"
-    echo -e "    cd $INSTALL_DIR/blackhornet"
+    echo -e "    cd $INSTALL_DIR/dhaheros"
     echo -e "    bash bh.sh status       # System status"
     echo -e "    bash bh.sh agent-status # Swarm connections"
     echo -e "    bash bh.sh daemon-status # Ecosystem health"

@@ -1,6 +1,6 @@
 """Self-Nest Bootstrap — autonomous deployment, health checks, and self-healing.
 
-The Nest is the Blackhornet instance's self-hosting layer. It:
+The Nest is the DhaherOS instance's self-hosting layer. It:
   1. Bootstrap — installs dependencies, creates directories, starts services
   2. Health Monitor — periodic checks on CPU, memory, disk, process health
   3. Self-Heal — restarts failed components, applies backpressure, circuit breaks
@@ -43,7 +43,7 @@ class ComponentStatus:
 
 
 class SelfNest:
-    """Autonomous self-hosting layer for a Blackhornet colony.
+    """Autonomous self-hosting layer for a DhaherOS colony.
 
     Usage:
         nest = SelfNest(NestConfig(name="my-colony"))

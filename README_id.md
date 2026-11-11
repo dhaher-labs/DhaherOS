@@ -1,21 +1,21 @@
-# BlackHornet
+# DhaherOS
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Version](https://img.shields.io/badge/version-7.0.0-orange)
+![Version](https://img.shields.io/badge/version-8.0.0-orange)
 ![Trading](https://img.shields.io/badge/trading-paper--only-red)
 
 **Pilih bahasa:** [EN — English](README.md) · [ID — Bahasa Indonesia](README_id.md) · [CN — 中文](README_zh.md)
 
-> **Status — rebuild bersih v7.0.0.**
-> BlackHornet v7 adalah pembangunan ulang menyeluruh dengan **riwayat git satu-commit yang baru** (seluruh riwayat pra-v7 dipensiunkan karena alasan keamanan — lihat [Keamanan](#keamanan)).
+> **Status — v8.0.0 (DhaherOS).**
+> DhaherOS melanjutkan BlackHornet v7.0.0, yang merupakan pembangunan ulang menyeluruh dengan **riwayat git satu-commit yang baru** (seluruh riwayat pra-v7 dipensiunkan karena alasan keamanan — lihat [Keamanan](#keamanan)).
 > Modul trading-nya **paper-trading saja**. **Tidak ada konektivitas broker sungguhan.** Tidak ada bagian dari repositori ini yang merupakan saran finansial.
 
 ---
 
-## Apa itu BlackHornet
+## Apa itu DhaherOS
 
-BlackHornet adalah **platform koloni agent otonom** yang ditulis dalam Python: koloni proses agent yang saling bekerja sama dengan memori bersama, state ekosistem yang hidup, akses LLM tanpa kunci API, registri tool ter-sandbox, dan stack trading paper-only — disajikan lewat dashboard tanpa dependensi eksternal.
+DhaherOS adalah **platform koloni agent otonom** yang ditulis dalam Python: koloni proses agent yang saling bekerja sama dengan memori bersama, state ekosistem yang hidup, akses LLM tanpa kunci API, registri tool ter-sandbox, dan stack trading paper-only — disajikan lewat dashboard tanpa dependensi eksternal.
 
 Ia **bukan** AGI, dan belum melakukan self-improvement dalam arti yang berarti. Sebagian bagiannya (loop "self-improvement" Omega dan debat Council) adalah **scaffolding tata kelola dengan output debat tersimulasi** dan diberi label demikian. README ini menjelaskan apa yang benar-benar berfungsi, diverifikasi terhadap kode dan suite 366-test pada baseline v7.
 
@@ -42,7 +42,7 @@ Ia **bukan** AGI, dan belum melakukan self-improvement dalam arti yang berarti. 
 Persyaratan: **Python ≥ 3.11** dan pip.
 
 ```bash
-# install (editable, paket lokal "blackhornet-colony")
+# install (editable, paket lokal "dhaheros")
 pip install -e .
 
 # dashboard + ecosystem API + memory + graph (http://localhost:8080)
@@ -94,6 +94,10 @@ Money-path trading **dikecualikan dari migrasi sampai Fase 5+**. Detail lengkap:
 - [PLAN.md](PLAN.md) — rencana rebuild, detail roadmap, kriteria penerimaan
 - [docs/13-changelog/](docs/13-changelog/CHANGELOG.md) — changelog historis dan audit integrasi SAMAN
 - [README_zh.md](README_zh.md) — terjemahan bahasa Mandarin
+
+## Kredit & Hereditas
+
+DhaherOS adalah kelanjutan resmi dari **BlackHornet v7.0.0** karya mulkymalikuldhr / Dhaher-Labs — rebrand 2026-11-11 per DL-37. Seluruh kredit untuk desain, arsitektur, dan rebuild bersih v7.0.0 milik penulis aslinya; DhaherOS melanjutkan proyek ini di bawah nama barunya.
 
 ## Keamanan
 

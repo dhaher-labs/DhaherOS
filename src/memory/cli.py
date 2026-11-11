@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 class MemoryCLI:
-    """CLI interface for the BlackHornet Memory System."""
+    """CLI interface for the DhaherOS Memory System."""
 
     def __init__(self, data_dir: str = "~/.bh/memory"):
         self._data_dir = os.path.expanduser(data_dir)
@@ -51,7 +51,7 @@ class MemoryCLI:
         )
 
     def run(self, args: list[str]) -> None:
-        parser = argparse.ArgumentParser(description="BlackHornet Memory CLI")
+        parser = argparse.ArgumentParser(description="DhaherOS Memory CLI")
         sub = parser.add_subparsers(dest="command")
 
         p_add = sub.add_parser("add", help="Add entry to long-term memory")
@@ -165,7 +165,7 @@ class MemoryCLI:
 
         box_width = 50
         print("╔" + "═" * (box_width - 2) + "╗")
-        print("║  BlackHornet Memory System Stats" + " " * 15 + "║")
+        print("║  DhaherOS Memory System Stats" + " " * 15 + "║")
         print("╠" + "═" * (box_width - 2) + "╣")
         print(f"║  STM:       {stm_stats.get('current_entries', 0):>5} entries, TTL={stm_stats.get('default_ttl_seconds', 3600)}s")
         print(f"║  LTM:       {ltm_stats.get('total_entries', 0):>5} entries, FTS5 ready")

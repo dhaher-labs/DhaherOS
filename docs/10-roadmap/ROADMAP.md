@@ -1,6 +1,6 @@
-# Roadmap — BlackHornet
+# Roadmap — DhaherOS
 
-> **2026-10-30:** Rencana evolusi besar tersedia di [`ATLAS_PLAN.md`](./ATLAS_PLAN.md) — BlackHornet → Institution Platform (harness/control plane federasi runtime, sesi visi operator 28 Okt 2026). Dokumen ini tetap menjadi snapshot status v7.0.0.
+> **2026-10-30:** Rencana evolusi besar tersedia di [`ATLAS_PLAN.md`](./ATLAS_PLAN.md) — DhaherOS → Institution Platform (harness/control plane federasi runtime, sesi visi operator 28 Okt 2026). Dokumen ini tetap menjadi snapshot status v7.0.0.
 
 ## Current (v7.0.0 — 2026-11-01)
 - pyproject version 7.0.0 (CHANGELOG 2026-10-27); main @ 1a6cf80 (114 commits ahead of tag v7.0.0 = 93f745e)

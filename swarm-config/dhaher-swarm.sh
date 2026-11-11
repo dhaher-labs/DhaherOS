@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# DHAHER SWARM — Unified Control Script (based on blackhornet hermes.sh)
+# DHAHER SWARM — Unified Control Script (based on dhaheros hermes.sh)
 # ============================================================================
 # Usage: ./dhaher-swarm.sh [start|stop|restart|status|logs|health|install|clone]
 #
@@ -166,7 +166,7 @@ clone() {
   cd "$target"
   git clone "https://github.com/dhaher-labs/ProxyGateLLM.git" 2>/dev/null || true
   git clone "https://github.com/dhaher-labs/mnemosyne.git" 2>/dev/null || true
-  git clone "https://github.com/dhaher-labs/blackhornet.git" 2>/dev/null || true
+  git clone "https://github.com/dhaher-labs/dhaheros.git" 2>/dev/null || true
   git clone "https://github.com/dhaher-labs/agent.git" 2>/dev/null || true
   
   # Install script

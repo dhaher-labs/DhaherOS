@@ -1,9 +1,9 @@
-//! `bh-rtd` — BlackHornet Rust runtime daemon (Phase 0 contracts + Phase 1
+//! `bh-rtd` — DhaherOS Rust runtime daemon (Phase 0 contracts + Phase 1
 //! bridges + Phase 2 runtime wedge).
 //!
 //! The Rust + Infinity roadmap (PLAN.md §4) proceeds by strangler-fig:
 //! *"adopt the protocol, embed the runtime, never port the colony."* The
-//! Python BlackHornet stays fully working at every phase;
+//! Python DhaherOS stays fully working at every phase;
 //! [`RuntimeFlavor::Python`] remains the default.
 //!
 //! What exists now:
@@ -26,7 +26,7 @@
 //!   R10 isolation: no Infinity types here, swappable persistence backend).
 //! * `infinity_adapter` (feature `infinity`) — a minimal integration stub
 //!   over the **verified** `infinity-agent-core` 0.2.0 API, mapping
-//!   BlackHornet concepts onto Infinity primitives per the Task 12-c
+//!   DhaherOS concepts onto Infinity primitives per the Task 12-c
 //!   researcher mapping.
 //! * `infinity_host` (feature `infinity`) — [`InfinityHost`], the Phase 2
 //!   [`AgentHost`](host::AgentHost) implementation embedding real
@@ -128,7 +128,7 @@ pub mod jeumpa;
 /// crate does not pretend otherwise.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum RuntimeFlavor {
-    /// The Python BlackHornet runtime (the default; always available).
+    /// The Python DhaherOS runtime (the default; always available).
     Python,
     /// The Rust runtime wedge (`bh-rtd`). Phase 0: contract only, no daemon.
     Rust,

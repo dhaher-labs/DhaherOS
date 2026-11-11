@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the BlackHornet internal module dependency graph (graphify).
+"""Generate the DhaherOS internal module dependency graph (graphify).
 
 Parses every ``*.py`` file under ``src/`` with :mod:`ast`, extracts internal
 imports (``import src.*`` / ``from src.*`` / relative imports that cross
@@ -131,7 +131,7 @@ def main() -> int:
     edges_total = len({(s, d) for s in fan_out for d in fan_out[s]})
 
     lines: list[str] = [
-        "# BlackHornet — Module Dependency Graph",
+        "# DhaherOS — Module Dependency Graph",
         "",
         "> **GENERATED FILE** — do not edit by hand.",
         "> Regenerate with `python3 scripts/gen_arch_graph.py` and commit the result.",

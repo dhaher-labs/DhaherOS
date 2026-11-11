@@ -1,4 +1,4 @@
-# BlackHornet — Module Dependency Graph
+# DhaherOS — Module Dependency Graph
 
 > **GENERATED FILE** — do not edit by hand.
 > Regenerate with `python3 scripts/gen_arch_graph.py` and commit the result.

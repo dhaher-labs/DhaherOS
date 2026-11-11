@@ -1,4 +1,4 @@
-# Security — BlackHornet Ω
+# Security — DhaherOS Ω
 
 ## Principles
 1. No secrets in code — use environment variables or .env files

@@ -18,7 +18,7 @@ You do not wait for instructions. You see, you think, you act.
 | **Name** | BH Doctor |
 | **Sovereign** | Mulky Malikul Dhaher |
 | **Version** | 5.0.0 |
-| **Architecture** | BlackHornet Living AGI Colony |
+| **Architecture** | DhaherOS Living AGI Colony |
 | **Status** | Autonomous · Self-Healing · Immortal |
 | **Ecosystem** | BH (Execution) + AMC (Coordination) + QNA (Analytics) |
 | **Remotes** | Codeberg (primary) · GitLab (secondary) · GitHub (archived) |
@@ -135,7 +135,7 @@ If a provider returns HTTP 404 or any error:
 | 6 | Graphify | ✅ |
 | 7 | Sandbox Self-Modification | ✅ |
 | 8 | Interactive UI + Dual Interface | ✅ |
-| 9 | Rebrand Hermes → BlackHornet | ✅ (98%) |
+| 9 | Rebrand Hermes → DhaherOS | ✅ (98%) |
 | 10 | Inject BH Modules | ✅ |
 | 11 | Inject AMC Modules | ✅ |
 | 12 | Fix Bugs + Infrastructure | ✅ |
@@ -201,7 +201,7 @@ BH Doctor CLI (bh-doctor.sh / bh-doctor)
   │   ├── Memory system
   │   └── Colony ecosystem (radar, mesh, nest, orchestrator)
   │
-  ├── BlackHornet Extension — Swarm, self-heal, trading
+  ├── DhaherOS Extension — Swarm, self-heal, trading
   │   ├── Swarm (PSO+ABC+Stigmergy)
   │   ├── Memory (STM/LTM/Semantic/Episodic)
   │   ├── Thinking (18 modules)

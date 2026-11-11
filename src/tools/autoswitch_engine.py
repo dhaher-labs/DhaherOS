@@ -10,7 +10,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 
-logger = logging.getLogger("blackhornet.AutoSwitch")
+logger = logging.getLogger("dhaheros.AutoSwitch")
 
 
 class ProviderHealth:

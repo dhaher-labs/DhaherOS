@@ -1,4 +1,4 @@
-"""BlackHornet Memory Provider — BH MemoryProvider plugin.
+"""DhaherOS Memory Provider — BH MemoryProvider plugin.
 
 Uses MemorySystem (STM + LTM + Semantic + Episodic + Consolidation + Forgetting)
 as a drop-in memory backend for Nous Hermes Agent.
@@ -74,7 +74,7 @@ FORGET_SCHEMA: Dict[str, Any] = {
 
 
 class BHMemoryProvider(MemoryProvider):
-    """BH MemoryProvider backed by BlackHornet MemorySystem."""
+    """BH MemoryProvider backed by DhaherOS MemorySystem."""
 
     def __init__(self):
         self._session_id = ""
@@ -136,7 +136,7 @@ class BHMemoryProvider(MemoryProvider):
         if not self._active:
             return ""
         return (
-            "# BlackHornet Memory\n"
+            "# DhaherOS Memory\n"
             "Active. Persistent long-term memory with semantic search.\n"
             "Use bh_store to remember facts, bh_search to recall.\n"
         )

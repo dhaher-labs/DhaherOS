@@ -120,7 +120,7 @@ class AMCBridge:
         try:
             if hasattr(self._amc_memory_manager, "add_entry"):
                 self._amc_memory_manager.add_entry(
-                    agent_id="blackhornet",
+                    agent_id="dhaheros",
                     content=content,
                     memory_type="observation",
                     tags=tags or [],
@@ -128,7 +128,7 @@ class AMCBridge:
                 return True
             elif hasattr(self._amc_memory_manager, "create_page"):
                 self._amc_memory_manager.create_page(
-                    agent_id="blackhornet",
+                    agent_id="dhaheros",
                     memory_type="observation",
                     title=key,
                     content=content,

@@ -1,5 +1,5 @@
 """Comprehensive end-to-end integration tests for self-healing, self-upgrade,
-and immortal capabilities of BlackHornet.
+and immortal capabilities of DhaherOS.
 
 Covers:
   - Self-healing: heartbeat → failure detection → recovery

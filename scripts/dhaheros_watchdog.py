@@ -3,7 +3,7 @@
 BH Doctor - Auto-Export & Self-Heal Watchdog
 
 Automatically exports sessions, monitors system health, and triggers self-healing.
-Runs as a background daemon for BlackHornet Colony.
+Runs as a background daemon for DhaherOS Colony.
 """
 
 import os
@@ -82,7 +82,7 @@ class SessionExporter:
         md_content = f"""# Session Export: {session_id}
 **Exported:** {datetime.now().isoformat()}
 **Sovereign:** Mulky Malikul Dhaher
-**BlackHornet Version:** 5.0.0
+**DhaherOS Version:** 5.0.0
 
 ---
 

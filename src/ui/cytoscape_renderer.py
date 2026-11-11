@@ -11,7 +11,7 @@ CYTOSCAPE_HTML_TPL = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BlackHornet Graph Dashboard</title>
+<title>DhaherOS Graph Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"></script>
 <style>
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -32,7 +32,7 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 </head>
 <body>
 <div class="header">
-  <h1>🕷 BlackHornet Knowledge Graph</h1>
+  <h1>🕷 DhaherOS Knowledge Graph</h1>
   <div class="controls">
     <input type="text" id="search" placeholder="Search node..." />
     <button onclick="searchNode()">Search</button>

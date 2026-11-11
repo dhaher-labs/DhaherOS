@@ -1,6 +1,6 @@
-# BlackHornet v7.0.0 Clean Rebuild & Shipping Plan
+# DhaherOS v7.0.0 Clean Rebuild & Shipping Plan
 
-- **Task:** 12-e (planner) · **Date:** 2026-10-27 · **Repo:** /home/z/blackhornet @ 82fb90f
+- **Task:** 12-e (planner) · **Date:** 2026-10-27 · **Repo:** /home/z/dhaheros @ 82fb90f
 - **Sources:** agent-ctx/research-infinity-rust.md (researcher, 12-c), agent-ctx/architect-findings.md (architect, 12-d-1), agent-ctx/audit-report.md (auditor, 12-d-2), docs/ARCHITECTURE.md. Every claim below traces to one of these.
 - **Locked decisions (not re-litigated):** fresh orphan git history (NO filter-repo); target v7.0.0; same 6 remote names recreated; secrets rotation is a USER action; tests stay green (366 passed baseline); `agent-ctx/` excluded from the shipped tree.
 
@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-**What/why:** BlackHornet is being rebuilt clean locally — re-mapped, re-wired, re-documented, tidied, and re-shipped as **v7.0.0** — because the current tree is a 5-lineage fusion (AMC core, dead deer-flow harness, Hermes quant, immortal-daemon shell line, colony ecosystem v2) whose headline features are stubs, dead, or unimportable, and whose git history carries a burned credentials file. Ship = recreate the 6 remotes and push a **fresh single-commit orphan history**, which permanently removes `.env.hermes` (~50 live secrets) from history. Future = strangler-fig Rust rewrite with hydro-project/infinity.
+**What/why:** DhaherOS is being rebuilt clean locally — re-mapped, re-wired, re-documented, tidied, and re-shipped as **v7.0.0** — because the current tree is a 5-lineage fusion (AMC core, dead deer-flow harness, Hermes quant, immortal-daemon shell line, colony ecosystem v2) whose headline features are stubs, dead, or unimportable, and whose git history carries a burned credentials file. Ship = recreate the 6 remotes and push a **fresh single-commit orphan history**, which permanently removes `.env.hermes` (~50 live secrets) from history. Future = strangler-fig Rust rewrite with hydro-project/infinity.
 
 **Current state (5 bullets):**
 1. **What runs:** only three things actually work — the stdlib dashboard + memory/graph stack (`src/ui/web_server.py` + `api_bridge.py`), the paper-only trading bot (`src/hermes_quant.py` + `src/tools/`), and the ecosystem-state API (`GET /api/v1/ecosystem`) — while Omega's self-improvement loop, the 15-persona council, harness agents, channels, and MCP are simulated, decorative, or unimportable (architect §1, §7, §9).
@@ -34,7 +34,7 @@
 | D7 | `src/integrations/` (8 files) | Twin dir of `src/integration/` (which hosts the live unified_launcher); its clients (crucix/organism/quant bridges) serve only the orphaned ecosystem router (architect §10) | Re-add deliberately if external bridges are ever needed |
 | D8 | 102 template agents (`src/agents/audit/*` 51 + `specialists/*` 51) | Near-identical name-swapped files, zero unique behavior beyond prompts (architect §3) | Keep the core role set (planner/coder/researcher/executor + colony orchestration) per architect §6 |
 | D9 | `skills/` (~20 SKILL.md packs) | Tooling artifacts, not product code (architect §4.6) | Move to a separate assets location, not deleted |
-| D10 | `scripts/` loose daemons (blackhornet_daemon, autonomy, keeper, message_bus, self_write, rebrand, push-all, auto-push) | Overlap with `src/immortal_daemon.py`/`src/watchdog.py`/`swarm-config/` (architect §4.7) | Consolidate into one ops surface; keep `hermes.sh` references working |
+| D10 | `scripts/` loose daemons (dhaheros_daemon, autonomy, keeper, message_bus, self_write, rebrand, push-all, auto-push) | Overlap with `src/immortal_daemon.py`/`src/watchdog.py`/`swarm-config/` (architect §4.7) | Consolidate into one ops surface; keep `hermes.sh` references working |
 | D11 | `src/hermes_nous/layers.py`, `src/hypergate.py`, `src/mnemosyne_bridge.py` | Aspirational glue to repos not part of this codebase (architect §4.9) | None at HEAD; they are unwired |
 | D12 | Root marketing/status MDs (`PR.md`, `WEALTH_REALITY_CHECK.md`, `FINAL_REALIZATION.md`, `PROXYGATELLM_*`, `UPGRADE_PLAN.md`, `SESSION-SUMMARY.md`, …) | Historical noise (architect §4.10) | Archive under `docs/history/` (move, not delete) |
 | D13 | `ui/` "Living World" game (second UI) | Two UIs, two ports, two ideas of "status" (architect §3, §7) | Move to its own repo; keep `src/ui/` as the one dashboard |
@@ -80,12 +80,12 @@
 1. **Tidy execution** — apply §2 DROP/KEEP/FIX on a working tree; re-run the import sweep after each DROP (baseline 496 OK shrinks only by dropped modules); archive D12 under `docs/history/`; add `agent-ctx/` to `.gitignore` (local-only audit material — never enters the new history).
 2. **Tests green** — `pytest tests/ -q` must report **366 passed, 22 skipped, 0 failed** after every step; no tidy merges with a red suite (locked constraint).
 3. **Version bump** — `pyproject.toml` 5.1.0 → **7.0.0**; README + changelog entry reflecting honest subsystem verdicts (architect §9 replaces marketing claims).
-4. **Fresh orphan history** — `git checkout --orphan v7` → single initial commit `BlackHornet v7.0.0` (locked decision; supersedes filter-repo). Verify: exactly 1 commit; `git log --all -- .env.hermes` EMPTY; `git fsck --no-dangling` = 0 broken links (corruption F2 does not carry over — new objects only).
+4. **Fresh orphan history** — `git checkout --orphan v7` → single initial commit `DhaherOS v7.0.0` (locked decision; supersedes filter-repo). Verify: exactly 1 commit; `git log --all -- .env.hermes` EMPTY; `git fsck --no-dangling` = 0 broken links (corruption F2 does not carry over — new objects only).
 5. **Tag** — annotated `v7.0.0` on the orphan commit.
 6. **Recreate 6 remotes** (exact names, high-level API calls; tokens are USER-held, agents never embed secrets):
-   - GitHub: `POST /user/repos {"name":"BlackHornet"}` (→ `mulkymalikuldhaher/BlackHornet`), same for `mulkymalikuldhrs/blackhornet`; `POST /orgs/dhaher-labs/repos` (→ `dhaher-labs/BlackHornet`).
-   - Codeberg (Forgejo): `POST /api/v1/user/repos` (→ `mulkymalikuldhr/blackhornet`); `POST /api/v1/orgs/Dhaher-Labs/repos` (→ `Dhaher-Labs/BlackHornet`). ⚠️ Codeberg personal quota was over at Task 11 (913.2/750 MiB) — user must free quota; the new history is tiny (~16 MB tree, no old objects).
-   - GitLab: `POST /api/v1/projects?path=blackhornet&namespace_id=<user>` (→ `mulkymalikuldhr/blackhornet`); retry with backoff (anti-abuse pattern seen at Task 11).
+   - GitHub: `POST /user/repos {"name":"DhaherOS"}` (→ `mulkymalikuldhaher/DhaherOS`), same for `mulkymalikuldhrs/dhaheros`; `POST /orgs/dhaher-labs/repos` (→ `dhaher-labs/DhaherOS`).
+   - Codeberg (Forgejo): `POST /api/v1/user/repos` (→ `mulkymalikuldhr/dhaheros`); `POST /api/v1/orgs/Dhaher-Labs/repos` (→ `Dhaher-Labs/DhaherOS`). ⚠️ Codeberg personal quota was over at Task 11 (913.2/750 MiB) — user must free quota; the new history is tiny (~16 MB tree, no old objects).
+   - GitLab: `POST /api/v1/projects?path=dhaheros&namespace_id=<user>` (→ `mulkymalikuldhr/dhaheros`); retry with backoff (anti-abuse pattern seen at Task 11).
 7. **Push** — `git remote add` ×6 (gh1, gh2, gh3-org, cb1, cb2-org, gl) → push `main` + `v7.0.0` to each; fresh push only, no force-push needed (new remotes start empty).
 8. **Post-ship verification matrix** — per remote: `ls-remote` HEAD == orphan commit and tag present; fresh clone → `git fsck --no-dangling` clean; `git log --all -- .env.hermes` empty; token scan 0 hits; `pytest tests/ -q` 366/22; `bh-colony --help` and `bh-omega --help` exit 0; `agent-ctx/`, `data/`, `exports/` not in `git ls-files`.
 9. **SECRETS ROTATION — USER ACTION (agents cannot do this):** rotate all ~50 `.env.hermes` credentials (GitLab PAT, Codeberg token, 7 Telegram bot tokens, 5 Groq keys, NVIDIA, Nexus, Together, AlphaVantage/Polygon/financial APIs, HF read+write, …) and **sweep crypto wallets to new addresses** (MetaMask, Phantom, Steem owner/active keys are burned, not rotatable) — auditor F1/§8.1. Fresh history removes the repo copy, NOT the exposure.
@@ -94,7 +94,7 @@
 
 ## 4. Rust + Infinity Roadmap (strangler-fig, from research-infinity-rust.md §3)
 
-Posture: **adopt the protocol, embed the runtime, never port the colony.** Python BlackHornet stays fully working at every phase; `BH_RUNTIME=python|rust` flag gates every wedge, **`BH_RUNTIME=python` is the default**; the **trading money-path is excluded from migration until Phase 5+** (live-trading gate + journal semantics regression-tested before any runtime flag flip). Stable seams: MCP, RAP, `ModelProvider`, store traits.
+Posture: **adopt the protocol, embed the runtime, never port the colony.** Python DhaherOS stays fully working at every phase; `BH_RUNTIME=python|rust` flag gates every wedge, **`BH_RUNTIME=python` is the default**; the **trading money-path is excluded from migration until Phase 5+** (live-trading gate + journal semantics regression-tested before any runtime flag flip). Stable seams: MCP, RAP, `ModelProvider`, store traits.
 
 | Phase | Goal | Deliverable | Exit criteria |
 |-------|------|-------------|---------------|

@@ -1,4 +1,4 @@
-//! The [`AgentHost`] contract — how BlackHornet colony member agents will be
+//! The [`AgentHost`] contract — how DhaherOS colony member agents will be
 //! driven from Rust.
 //!
 //! Phase 0 scope: the trait and its data types only. There is **no**
@@ -7,7 +7,7 @@
 //! wedge will provide a real host backed by `infinity-agent-core` threads;
 //! the Python side keeps running the colony in the meantime.
 //!
-//! Naming is aligned with BlackHornet concepts: the unit of work is a
+//! Naming is aligned with DhaherOS concepts: the unit of work is a
 //! *colony member agent* (what `src/colony` orchestrates today), events are
 //! the existing colony event flow (`EcosystemOrchestrator` / `MeshBus`
 //! vocabulary), not Infinity's internals — the adapter layer translates.
@@ -29,7 +29,7 @@ pub struct AgentId(pub String);
 pub struct AgentSpec {
     /// Colony-visible name (e.g. `"queen"`, `"radar-worker-1"`).
     pub name: String,
-    /// Colony role (BlackHornet role vocabulary, e.g. `"queen"`, `"worker"`).
+    /// Colony role (DhaherOS role vocabulary, e.g. `"queen"`, `"worker"`).
     pub role: String,
     /// System instructions for the agent's LLM turns.
     pub instructions: String,
@@ -56,7 +56,7 @@ pub struct ColonyEvent {
     pub payload_json: String,
 }
 
-/// Coarse colony event categories (BlackHornet vocabulary).
+/// Coarse colony event categories (DhaherOS vocabulary).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum ColonyEventKind {
     /// A task was assigned to the member agent (orchestrator → agent).
@@ -108,7 +108,7 @@ impl core::fmt::Display for HostError {
 
 impl std::error::Error for HostError {}
 
-/// Contract for a host that runs BlackHornet colony member agents.
+/// Contract for a host that runs DhaherOS colony member agents.
 ///
 /// Synchronous by design in Phase 0 (object-safe, runtime-free). The Phase 2
 /// infinity-backed implementation will be async internally (`tokio` via

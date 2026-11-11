@@ -110,7 +110,7 @@ class TUIRenderer:
             "    help     — this help",
             "    quit     — exit TUI",
         ]
-        return self.box("BlackHornet TUI", help_lines)
+        return self.box("DhaherOS TUI", help_lines)
 
     def render_agents(self, agents_data: Optional[Dict] = None) -> str:
         lines: List[str] = []
@@ -211,7 +211,7 @@ class TUIRenderer:
 class TUIShell(cmd.Cmd):
     intro = """
 ╔══════════════════════════════════════════════════════╗
-║          BlackHornet Living AGI — TUI               ║
+║          DhaherOS Living AGI — TUI               ║
 ║          Type "help" for commands                    ║
 ╚══════════════════════════════════════════════════════╝
 """

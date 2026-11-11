@@ -1,7 +1,7 @@
-# Product Requirements Document — BlackHornet Ω
+# Product Requirements Document — DhaherOS Ω
 
 ## Product Overview
-BlackHornet Ω is an autonomous AGI engine that manages the Dhaher Labs ecosystem. It scores projects, fixes gaps, syncs to Codeberg, and improves itself.
+DhaherOS Ω is an autonomous AGI engine that manages the Dhaher Labs ecosystem. It scores projects, fixes gaps, syncs to Codeberg, and improves itself.
 
 ## Target Users
 - **Primary:** Autonomous AGI agents (operate without human supervision)

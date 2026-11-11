@@ -1,4 +1,4 @@
-"""BlackHornet Auto-Discovery Engine.
+"""DhaherOS Auto-Discovery Engine.
 
 FASE 1 — 10 sub-agents:
   1.1 LLM Scanner      — discovers free LLM providers

@@ -9,7 +9,7 @@ import logging
 from datetime import datetime
 from typing import Any, Dict, Optional
 
-logger = logging.getLogger("blackhornet.MarketData")
+logger = logging.getLogger("dhaheros.MarketData")
 
 
 class MarketDataTool:
@@ -231,5 +231,5 @@ class MarketDataTool:
             "status": "not_configured",
             "message": "Economic calendar requires additional API integration",
             "suggested_apis": ["ForexFactory", "Investing.com", "FRED"],
-            "implementation": "Configure an economic calendar API in config/blackhornet.yaml to enable live data"
+            "implementation": "Configure an economic calendar API in config/dhaheros.yaml to enable live data"
         })

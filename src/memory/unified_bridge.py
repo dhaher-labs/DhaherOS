@@ -4,7 +4,7 @@ Menghubungkan BH MemorySystem ke seluruh ekosistem memori.
 
 Usage:
     from memory.unified_bridge import unified_bridge
-    unified_bridge.store("code", "wrote function X", project="blackhornet")
+    unified_bridge.store("code", "wrote function X", project="dhaheros")
     results = unified_bridge.search("function X")
     unified_bridge.sync_all()
 """

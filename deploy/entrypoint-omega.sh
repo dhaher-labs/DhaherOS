@@ -3,7 +3,7 @@
 set -e
 
 if [ $# -eq 0 ]; then
-    echo "BlackHornet Omega — Docker Image"
+    echo "DhaherOS Omega — Docker Image"
     echo "Usage: docker run bh-omega <command>"
     echo ""
     echo "Commands:"

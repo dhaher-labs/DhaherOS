@@ -1,4 +1,4 @@
-"""Genome evolution/mutation — self-improvable genome for BlackHornet."""
+"""Genome evolution/mutation — self-improvable genome for DhaherOS."""
 
 from __future__ import annotations
 

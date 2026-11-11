@@ -1,7 +1,7 @@
-# Gemini Guide — BlackHornet (v7)
+# Gemini Guide — DhaherOS (v7)
 
-BlackHornet is an autonomous agent colony platform (Python ≥ 3.11, package
-`blackhornet-colony`): cooperating agent processes with federated memory, a
+DhaherOS is an autonomous agent colony platform (Python ≥ 3.11, package
+`dhaheros`): cooperating agent processes with federated memory, a
 live ecosystem state exposed over HTTP, keyless LLM access, a sandboxed tool
 registry, swarm-intelligence algorithms, and a **paper-only** trading stack.
 

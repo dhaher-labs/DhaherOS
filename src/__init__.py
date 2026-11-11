@@ -1,4 +1,4 @@
-"""BLACKHORNET — Source Package.
+"""DHAHEROS — Source Package.
 
 Unified API for all BH modules:
 - Types: types

@@ -1,4 +1,4 @@
-# BlackHornet — Architecture (v7.0.0)
+# DhaherOS — Architecture (v7.0.0)
 
 > Rewritten for the v7.0.0 clean rebuild (2026-10-27). This document describes the
 > **v7 target state**: what the rebuild keeps, what it removed, and how the kept
@@ -9,10 +9,10 @@
 
 ---
 
-## 1. What BlackHornet is
+## 1. What DhaherOS is
 
 A Python **autonomous agent colony platform** (Python ≥ 3.11, package
-`blackhornet-colony`): cooperating agent processes with federated memory, a live
+`dhaheros`): cooperating agent processes with federated memory, a live
 ecosystem state exposed over HTTP, keyless LLM access, a sandboxed tool registry,
 swarm-intelligence algorithms, and a **paper-only** trading stack — served through a
 zero-dependency dashboard.
@@ -27,7 +27,7 @@ drops the rest, and labels the experimental remainder honestly.
 ```mermaid
 flowchart TB
     U["Operator / client (TUI, curl, browser)"]
-    subgraph BH["BlackHornet — stdlib web server :8080"]
+    subgraph BH["DhaherOS — stdlib web server :8080"]
         WS["ui/web_server"]
         AB["ui/api_bridge — the ONE REST API"]
         ORCH["colony EcosystemOrchestrator"]
@@ -50,8 +50,8 @@ protocol — it never replaces a Python subsystem in place.
 ## 2. Module map (v7 target)
 
 ```
-blackhornet/
-├── pyproject.toml            # blackhornet-colony 7.0.0; entry points bh-colony, bh-omega
+dhaheros/
+├── pyproject.toml            # dhaheros 8.0.0; entry points bh-colony, bh-omega
 ├── requirements.txt          # slim, declared-only deps (pydantic >=2,<3)
 ├── hermes.sh / deploy.sh     # service control + watchdog
 ├── Dockerfile / docker-compose.yml / deploy/   # container deploys (non-root)

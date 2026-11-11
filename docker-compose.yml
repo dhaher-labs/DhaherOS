@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: blackhornet/omega:5.0.0
+    image: dhaheros/omega:8.0.0
     container_name: bh-omega
     command: ["bh-omega", "start", "--loop", "0"]
     environment:
@@ -26,7 +26,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: blackhornet/omega:5.0.0
+    image: dhaheros/omega:8.0.0
     container_name: bh-omega-loop
     command: ["bh-omega", "loop"]
     environment:

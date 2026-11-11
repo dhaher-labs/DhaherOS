@@ -189,7 +189,7 @@ class RtdMemoryUdsServer:
     Usage::
 
         server = RtdMemoryUdsServer(data_dir="~/.bh/memory")
-        await server.start("/run/blackhornet/memory.sock")
+        await server.start("/run/dhaheros/memory.sock")
         await server.serve_forever()   # or: await server.stop()
     """
 

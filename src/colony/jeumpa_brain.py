@@ -1,4 +1,4 @@
-"""Jeumpa Brain — Zero-cost LLM providers for BlackHornet colony.
+"""Jeumpa Brain — Zero-cost LLM providers for DhaherOS colony.
 
 Port of Autonomous Organism's JeumpaBrain (TypeScript → Python).
 Provides 5 no-auth free LLM providers that work with ZERO API keys,

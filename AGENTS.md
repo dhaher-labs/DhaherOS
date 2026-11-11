@@ -1,10 +1,10 @@
-# AGENTS.md — BlackHornet
+# AGENTS.md — DhaherOS
 
 ## 1. Project Identity
 
 | Field | Value |
 |-------|-------|
-| Name | BlackHornet |
+| Name | DhaherOS |
 | Type | Autonomous agent colony platform — Python core + Rust runtime workspace (strangler-fig) |
 | Version | 7.0.0 |
 | Python | >=3.11 |
@@ -91,7 +91,7 @@ cd rust && cargo build && cargo test
 
 ### Logging
 ```python
-logger = logging.getLogger("blackhornet.ModuleName")
+logger = logging.getLogger("dhaheros.ModuleName")
 ```
 
 ### Communication

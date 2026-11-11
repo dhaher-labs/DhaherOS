@@ -1,4 +1,4 @@
-# BlackHornet API Reference
+# DhaherOS API Reference
 
 ## Core
 

@@ -93,7 +93,7 @@ class JeumpaUdsServer:
     Usage::
 
         server = JeumpaUdsServer()          # or JeumpaUdsServer(brain=my_stub)
-        await server.start("/run/blackhornet/jeumpa.sock")
+        await server.start("/run/dhaheros/jeumpa.sock")
         await server.serve_forever()        # or: await server.stop()
     """
 

@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "BlackHornet Phase 1 infinity-mcp-bridge surface — the BH tool catalog mirrored from src/agent_tools, the tools bridge client, and an Infinity runtime Tool implementation that executes BH tools over the UDS bridge protocol (no tool logic is ported)."
+description = "DhaherOS Phase 1 infinity-mcp-bridge surface — the BH tool catalog mirrored from src/agent_tools, the tools bridge client, and an Infinity runtime Tool implementation that executes BH tools over the UDS bridge protocol (no tool logic is ported)."
 
 [features]
 # Default ON: the plain `cargo build` / `cargo test` path exercises the full

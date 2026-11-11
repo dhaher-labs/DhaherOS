@@ -1,15 +1,15 @@
 #!/bin/bash
 # ============================================================================
-# BLACKHORNET - Bootstrap Installer
+# DHAHEROS - Bootstrap Installer
 # ============================================================================
 # Auto-installer: one command to install everything.
-# Run: curl -fsSL https://raw.githubusercontent.com/dhaher-labs/blackhornet/main/scripts/bootstrap.sh | bash
+# Run: curl -fsSL https://raw.githubusercontent.com/dhaher-labs/dhaheros/main/scripts/bootstrap.sh | bash
 # Or:  bash scripts/bootstrap.sh
 #
 # Installs:
 #   1. Python 3.11+ (if needed)
-#   2. BlackHornet Agent from Nous Research (autonomous core)
-#   3. blackhornet trading tools + dependencies
+#   2. DhaherOS Agent from Nous Research (autonomous core)
+#   3. dhaheros trading tools + dependencies
 #   4. Shared memory sync bridge → dhaher-labs/agent
 #   5. Immortal cron/auto-restart setup
 # ============================================================================
@@ -30,7 +30,7 @@ HERMES_AGENT_REPO="https://github.com/NousResearch/hermes-agent.git"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo ""
-echo -e "${MAGENTA}${BOLD}⚕ BLACKHORNET - Bootstrap${NC}"
+echo -e "${MAGENTA}${BOLD}⚕ DHAHEROS - Bootstrap${NC}"
 echo -e "${CYAN}Autonomous Multi-Agent Trading Infrastructure${NC}"
 echo ""
 
@@ -76,26 +76,26 @@ if ! command -v uv &>/dev/null; then
 fi
 echo -e "${GREEN}✓ uv $(uv --version)${NC}"
 
-# ── BlackHornet Agent (Nous Research) ──────────────────────────────────────
-echo -e "${CYAN}[3/6]${NC} Installing BlackHornet Agent (Nous Research)..."
+# ── DhaherOS Agent (Nous Research) ──────────────────────────────────────
+echo -e "${CYAN}[3/6]${NC} Installing DhaherOS Agent (Nous Research)..."
 BH_AGENT_DIR="$BH_HOME/nous-agent"
 if [ ! -d "$BH_AGENT_DIR" ]; then
     git clone "$HERMES_AGENT_REPO" "$BH_AGENT_DIR" --depth 1
 fi
 cd "$BH_AGENT_DIR"
 
-# Run BlackHornet Agent setup (non-interactive)
+# Run DhaherOS Agent setup (non-interactive)
 UV_PYTHON="$PYTHON_BIN" bash setup-bh.sh --skip-setup 2>&1 | tail -5
-echo -e "${GREEN}✓ BlackHornet Agent v$(./venv/bin/python bh --version 2>/dev/null | grep -oP 'v[\d.]+' | head -1)${NC}"
+echo -e "${GREEN}✓ DhaherOS Agent v$(./venv/bin/python bh --version 2>/dev/null | grep -oP 'v[\d.]+' | head -1)${NC}"
 
-# ── BlackHornet Agent → system PATH ────────────────────────────────────────
+# ── DhaherOS Agent → system PATH ────────────────────────────────────────
 mkdir -p "$HOME/.local/bin"
 ln -sf "$BH_AGENT_DIR/bh" "$HOME/.local/bin/bh"
 chmod +x "$HOME/.local/bin/bh" 2>/dev/null || true
 echo -e "${GREEN}✓ 'bh' command linked to ~/.local/bin${NC}"
 
-# ── blackhornet dependencies ────────────────────────────────────────
-echo -e "${CYAN}[4/6]${NC} Installing blackhornet dependencies..."
+# ── dhaheros dependencies ────────────────────────────────────────
+echo -e "${CYAN}[4/6]${NC} Installing dhaheros dependencies..."
 cd "$REPO_DIR"
 "$PYTHON_BIN" -m pip install -r requirements.txt -q 2>&1 | tail -3
 echo -e "${GREEN}✓ Trading tools dependencies installed${NC}"
@@ -137,11 +137,11 @@ touch "$BH_HOME/.bootstrapped"
 
 echo ""
 echo -e "${GREEN}${BOLD}══════════════════════════════════════════════${NC}"
-echo -e "${GREEN}${BOLD}  ⚕ BLACKHORNET — INSTALLED & IMMORTAL  ${NC}"
+echo -e "${GREEN}${BOLD}  ⚕ DHAHEROS — INSTALLED & IMMORTAL  ${NC}"
 echo -e "${GREEN}${BOLD}══════════════════════════════════════════════${NC}"
 echo ""
-echo -e "  ${BOLD}BlackHornet Agent:${NC}   $BH_AGENT_DIR"
-echo -e "  ${BOLD}blackhornet:${NC}  $REPO_DIR"
+echo -e "  ${BOLD}DhaherOS Agent:${NC}   $BH_AGENT_DIR"
+echo -e "  ${BOLD}dhaheros:${NC}  $REPO_DIR"
 echo -e "  ${BOLD}Agent Swarm:${NC}    $AGENT_SYNC_DIR"
 echo ""
 echo -e "${CYAN}Quick start:${NC}"

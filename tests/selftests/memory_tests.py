@@ -1,4 +1,4 @@
-"""Tests for BlackHornet Memory System (FASE 2).
+"""Tests for DhaherOS Memory System (FASE 2).
 
 Run: python3 src/memory/tests.py -v
 """

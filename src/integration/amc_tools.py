@@ -75,10 +75,10 @@ class AMCToolRegistrar:
 
         c = 0
         if self._register("bh_memory_store", bh_memory_store,
-                          "Store a value in BlackHornet memory"):
+                          "Store a value in DhaherOS memory"):
             c += 1
         if self._register("bh_memory_search", bh_memory_search,
-                          "Search BlackHornet memory by query"):
+                          "Search DhaherOS memory by query"):
             c += 1
         return c
 
@@ -98,7 +98,7 @@ class AMCToolRegistrar:
 
         c = 0
         if self._register("bh_graph_query", bh_graph_query,
-                          "Query the BlackHornet knowledge graph"):
+                          "Query the DhaherOS knowledge graph"):
             c += 1
         if self._register("bh_graph_track_agent", bh_graph_track_agent,
                           "Track an agent in the knowledge graph"):
@@ -134,10 +134,10 @@ class AMCToolRegistrar:
 
         c = 0
         if self._register("bh_system_memory_add", bh_system_memory_add,
-                          "Add to BlackHornet memory system"):
+                          "Add to DhaherOS memory system"):
             c += 1
         if self._register("bh_system_memory_search", bh_system_memory_search,
-                          "Search BlackHornet memory system"):
+                          "Search DhaherOS memory system"):
             c += 1
         return c
 

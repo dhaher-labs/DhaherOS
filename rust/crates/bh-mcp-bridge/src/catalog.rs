@@ -1,4 +1,4 @@
-//! The BH tool catalog — the Rust-side mirror of the BlackHornet tool
+//! The BH tool catalog — the Rust-side mirror of the DhaherOS tool
 //! registry semantics (`src/agent_tools/`).
 //!
 //! The Phase 1 rule is "bridges before ports": no tool logic lives here.

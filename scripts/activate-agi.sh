@@ -11,7 +11,7 @@ AUTONOMY="$BH_DIR/scripts/autonomy.py"
 LOG_DIR="$BH_DIR/logs"
 DATA_DIR="$BH_DIR/data"
 
-echo "═══ BLACKHORNET AGI — ACTIVATION ═══"
+echo "═══ DHAHEROS AGI — ACTIVATION ═══"
 echo ""
 
 mkdir -p "$LOG_DIR" "$DATA_DIR"

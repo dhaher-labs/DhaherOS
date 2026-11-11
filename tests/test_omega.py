@@ -1,4 +1,4 @@
-"""Tests for Lord Omega founding pillars embedded in BlackHornet."""
+"""Tests for Lord Omega founding pillars embedded in DhaherOS."""
 
 from __future__ import annotations
 

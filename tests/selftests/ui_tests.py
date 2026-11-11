@@ -139,7 +139,7 @@ class TestCytoscapeRenderer(unittest.TestCase):
     def test_render_html(self):
         html = self.cr.render_html()
         self.assertIn("cytoscape", html)
-        self.assertIn("BlackHornet", html)
+        self.assertIn("DhaherOS", html)
 
     def test_render_elements(self):
         data = {

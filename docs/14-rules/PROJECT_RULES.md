@@ -1,4 +1,4 @@
-# Project Rules — BlackHornet Ω
+# Project Rules — DhaherOS Ω
 
 ## Code Rules
 1. No hardcoded paths — use AutoPath or detect dynamically

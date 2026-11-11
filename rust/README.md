@@ -1,8 +1,8 @@
-# bh-rtd — BlackHornet Rust runtime workspace
+# bh-rtd — DhaherOS Rust runtime workspace
 
 Rust side of the Rust + Infinity strangler-fig roadmap (PLAN.md §4).
 Posture: **adopt the protocol, embed the runtime, never port the colony.**
-The Python BlackHornet stays fully working at every phase; `BH_RUNTIME=python`
+The Python DhaherOS stays fully working at every phase; `BH_RUNTIME=python`
 remains the default, and nothing in this workspace replaces, wraps, or calls
 any Python subsystem except through the documented UDS bridge protocol.
 
