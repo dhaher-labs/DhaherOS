@@ -89,6 +89,7 @@ The trading money-path is **excluded from migration until Phase 5+**. Full detai
 
 ## Documentation
 
+- **Canonical unified plan:** [docs/DhaherOS_Plan.md](docs/DhaherOS_Plan.md) (v1.6)
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — architecture map (v7)
 - [docs/02-arch/MODULE_GRAPH.md](docs/02-arch/MODULE_GRAPH.md) — generated package dependency graph (regenerate: `python3 scripts/gen_arch_graph.py`)
 - [PLAN.md](PLAN.md) — rebuild plan, roadmap detail, acceptance criteria

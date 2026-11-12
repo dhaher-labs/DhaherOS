@@ -1,0 +1,86 @@
+{
+  "$schema": "https://dhaheros.local/blackhornet-seats.v1.json",
+  "runtime_layer": "blackhornet",
+  "pivot_ref": "PIVOT_RECORD.md DL-37 — blackhornet becomes a runtime layer (11 execution seats + mission pipeline) inside DhaherOS",
+  "runtime": "python3",
+  "seat_count": 11,
+  "seats": [
+    {
+      "id": "seat-researcher",
+      "name": "researcher",
+      "runtime": "python3",
+      "capability": "knowledge.search",
+      "description": "Queries the knowledge index (scope-scoped) to gather context for a mission step; reuses the existing knowledge.search capability — no new capability invented."
+    },
+    {
+      "id": "seat-coder",
+      "name": "coder",
+      "runtime": "python3",
+      "capability": "task.create",
+      "description": "Drafts and submits new control-plane tasks (e.g. shell step, mission step); reuses task.create — composing on top of the existing executor + adapter contract."
+    },
+    {
+      "id": "seat-analyst",
+      "name": "analyst",
+      "runtime": "python3",
+      "capability": "task.read",
+      "description": "Reads task detail (state, events, artifacts, stdout/stderr) to interpret results; reuses task.read — no new read path."
+    },
+    {
+      "id": "seat-reviewer",
+      "name": "reviewer",
+      "runtime": "python3",
+      "capability": "task.read",
+      "description": "Reviews a finished task's artifacts/events for criteria conformance; reuses task.read — same audit path as the analyst seat."
+    },
+    {
+      "id": "seat-planner",
+      "name": "planner",
+      "runtime": "python3",
+      "capability": "task.create",
+      "description": "Plans the mission by composing task.create requests (one per step); reuses task.create so plan-time gate AT-12/capability/workspace deny-by-default all apply."
+    },
+    {
+      "id": "seat-executor",
+      "name": "executor",
+      "runtime": "python3",
+      "capability": "flow.run",
+      "description": "Drives a multi-step flow (Fase 2 src/flow.ts) as a single composed task via control plane; reuses flow.run — flow gates (capability per step, scope binding) apply unchanged."
+    },
+    {
+      "id": "seat-validator",
+      "name": "validator",
+      "runtime": "python3",
+      "capability": "task.read",
+      "description": "Validates side-effects/output against declared criteria; reuses task.read — does NOT mutate state (read-only by construction)."
+    },
+    {
+      "id": "seat-librarian",
+      "name": "librarian",
+      "runtime": "python3",
+      "capability": "knowledge.ingest",
+      "description": "Ingests new authorized sources (path under dhaheros/knowledge/, scope-scoped, secret-stripped); reuses knowledge.ingest — same deny-by-default path policy."
+    },
+    {
+      "id": "seat-sentinel",
+      "name": "sentinel",
+      "runtime": "python3",
+      "capability": "task.cancel",
+      "description": "Watches for runaway tasks (timeout/budget) and cancels them via POST /api/tasks/:id/cancel; reuses task.cancel — same state-machine rules (terminal states reject cancel with 409)."
+    },
+    {
+      "id": "seat-archivist",
+      "name": "archivist",
+      "runtime": "python3",
+      "capability": "knowledge.revoke",
+      "description": "Revokes a knowledge source (purge full descendants); reuses knowledge.revoke — same ACL double-check + immediate effective retrieval denial."
+    },
+    {
+      "id": "seat-orchestrator",
+      "name": "orchestrator",
+      "runtime": "python3",
+      "capability": "org.manage",
+      "description": "Coordinates the other 10 seats (assigns role per mission, manages org/role/member registry); reuses org.manage — the highest-privilege capability in the whitelist; AT-BH-05 enforces that only org members with org.manage in their role may claim this seat."
+    }
+  ]
+}

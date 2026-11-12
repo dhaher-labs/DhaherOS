@@ -1,3 +1,5 @@
+<!-- Canonical unified plan: docs/DhaherOS_Plan.md (v1.6) -->
+
 # DhaherOS v7.0.0 Clean Rebuild & Shipping Plan
 
 - **Task:** 12-e (planner) · **Date:** 2026-10-27 · **Repo:** /home/z/dhaheros @ 82fb90f
