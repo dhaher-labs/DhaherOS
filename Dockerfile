@@ -1,6 +1,6 @@
 # BH Omega — Docker Production Image
 # Multi-stage: builder → runtime
-FROM python:3.12-slim AS builder
+FROM python:3.15-slim AS builder
 
 LABEL org.opencontainers.image.title="DhaherOS Omega"
 LABEL org.opencontainers.image.description="DhaherOS Ω — Autonomous AGI Engine (OmegaEngine CLI)"
@@ -16,7 +16,7 @@ COPY deploy/entrypoint-omega.sh /entrypoint.sh
 RUN pip install --no-cache-dir -e . && \
     chmod +x /entrypoint.sh
 
-FROM python:3.12-slim AS runtime
+FROM python:3.15-slim AS runtime
 
 RUN groupadd -r bh && useradd -r -g bh -d /bh -s /sbin/nologin bh
 
